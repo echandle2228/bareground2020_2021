@@ -1,0 +1,108 @@
+Path analysis in R with Lavaan:
+Full-information maximum likelihood estimation
+
+By Mike Crowson, Ph.D.
+(September 23, 2019)
+
+Overview: The default approach to missing data in Lavaan is to perform listwise 
+deletion prior to estimation of a model. This approach can bias parameter
+estimates (if the data are not missing completely at random) and may also 
+result in a substantial loss of data (in those cases where there is a large
+proportion of data missing on your variables). Lavaan provides the facility to
+perform full-maximum likelihood (FIML) estimation which allows you to retain 
+more of the available information from your variables, which decreases the 
+likelihood of biases in parameter estimates.
+--------------------------------
+*The model is specified in exactly the same fashion as in the previous 
+video. (see link underneath video description)
+*A link to the data containing missing values and this text file will be 
+provided as a link as well.
+
+Location of the data: https://drive.google.com/open?id=1-5L3q0UnwUzIK_zvjBvbWE6mBSfM6RgW
+--------------------------------
+library(lavaan)
+missdata1<-read.csv("miss1.csv",header=TRUE,sep=",")
+
+#A quick look at 'missdata1' (data frame)
+str(missdata1)
+
+-------------------------------
+When running path analysis that involves full-information maximum likelihood
+(FIML) estimation, there are two possible approaches in Lavaan. The demos I have provided 
+thus far have relied on the 'lavaan' function to estimate the model parameters.
+You can still do this using FIML. However, you MUST EXPLICITLY ESTIMATE MEANS 
+AND INTERCEPTS for the model. This means that you will need to include '1+...'
+on any line where an endogenous variable is being predicted by other variables 
+in your model. This will instruct lavaan to estimate intercepts for the
+endogenous variables. It also means you will need to request estimation 
+of means of your exogenous variables with '<name>~1'. 
+
+When you fit the model using the 'lavaan' function, then the means and intercepts
+will be estimated along with the remaining parameters. If you do not add these
+requests, then the means and intercepts cannot be estimated. 
+
+model1<-'
+#equation where interest is predicted by ses & mastery and 
+#performance goals. Intercept for interest is estimated.
+interest~1+mastery+perfgoal+ses
+#equation where achieve is predicted by interest and anxiety.
+#Intercept for achieve is estimated.
+achieve~1+anxiety+interest+mastery
+#Equation where anxiety is predicted by mastery and performance goals
+#Intercept for achieve is estimated.
+anxiety~1+perfgoal+mastery
+#estimtating the variances of the exogenous variables (ses, mastery,performance)
+mastery~~mastery
+perfgoal~~perfgoal
+ses~~ses
+#estimtating the covariances of the exogenous variables (ses, mastery,performance)
+mastery~~perfgoal+ses
+perfgoal~~ses
+#estimating the residual variances for endogenous variables (interest, anxiety, achieve)
+interest~~interest
+anxiety~~anxiety
+achieve~~achieve
+#estimating the covariance of residuals for interest and anxiety
+interest~~anxiety
+#estimating means for the exogenous variables
+mastery~1
+perfgoal~1
+ses~1'
+
+fitFIML1<-lavaan(model1,data=missdata1,missing="fiml")
+summary(fitFIML1,fit.measures=TRUE)
+
+library(semPlot)
+semPaths(fitFIML1)
+
+#Demo without estimating means and intercepts (original lavaan model from previous
+video):
+
+model2<-'
+interest~mastery+perfgoal+ses
+achieve~anxiety+interest+mastery
+anxiety~perfgoal+mastery
+mastery~~mastery
+perfgoal~~perfgoal
+ses~~ses
+mastery~~perfgoal+ses
+perfgoal~~ses
+interest~~interest
+anxiety~~anxiety
+achieve~~achieve
+interest~~anxiety'
+
+fitFIML2<-lavaan(model2,data=missdata1,missing="fiml")
+summary(fitFIML2,fit.measures=TRUE)
+
+But...if you use the 'sem' function instead (with its defaults), the output
+will be correct.
+
+fitFIML2<-sem(model2,data=missdata1,missing="fiml")
+summary(fitFIML2,fit.measures=TRUE)
+
+#Using 'MLR' estimator to obtain scaled test statistic and robust standard
+#errors
+
+fitFIML3<-sem(model2,data=missdata1,estimator="MLR",missing="fiml")
+summary(fitFIML3,fit.measures=TRUE)

@@ -1,0 +1,199 @@
+Path analysis in R with Lavaan (introduction)
+
+By Mike Crowson, Ph.D.
+September 17, 2019
+
+Overview: There are two basic functions that allow you to
+run path analysis in Lavaan: the 'sem' and the 'lavaan'
+functions.This video will demonstrate how to specify 
+a path model involving only manifest variables and how to 
+estimate model parameters using the 'lavaan' function. A copy of 
+this text file and a .csv file containing the raw data will 
+be available for download underneath the video description.
+You will notice that I use the pound sign (#) in some of the 
+syntax. The # sign is used for comments and are not read by the
+program. I use it in some of the syntax below to provide annotations.
+---------------------------
+If you have not already done so, you will need to install Lavaan.
+
+install.packages("lavaan")
+---------------------------
+*Read data into R and store in data object. Make sure you have R correctly
+pointed to the folder containing your data. Below is syntax to create
+a data frame called 'processdata' when reading the .csv file 
+(referenced above) into R.This is the data frame we will be using when
+running our analyses.
+
+processdata<-read.csv("path analysis dataN BinW.csv",header=TRUE,sep=",")
+
+*Using the 'str' function, you can look at the structure of the data.
+
+str(processdata)
+---------------------------
+*Use libary function to call up lavaan
+
+library(lavaan)
+---------------------------
+*'lavaan' function
+
+Step 1: Use lavaan model syntax to specify path model and have it stored 
+in an R object. In our model, we will treat ses, mastery goals, 
+and performance goals as predictors of student achievement. The effect
+of mastery on achievement will be both direct and indirect (via
+interest and anxiety. The effects of ses and performance goals
+will be treated as being fully mediated through anxiety and interest. 
+
+When specifying predictive relationships in the model, we use the tilde 
+sign ('~'), which separates thedependent variable in each equation from 
+its predictors. Predictors are separated in each equation by '+' sign. 
+In our model, we will also allow the residuals for anxiety and interest 
+to correlate (see '~~' in syntax below)
+
+#model specification
+
+model<-'
+#equation where interest is predicted by ses & mastery and 
+#performance goals
+interest~mastery+perfgoal+ses
+#equation where achieve is predicted by interest and anxiety
+achieve~anxiety+interest+mastery
+#equation where anxiety is predicted by mastery and performance goals
+anxiety~perfgoal+mastery
+#estimtating the variances of the exogenous variables (ses, mastery,performance)
+mastery~~mastery
+perfgoal~~perfgoal
+ses~~ses
+#estimtating the covariances of the exogenous variables (ses, mastery,performance)
+mastery~~perfgoal+ses
+perfgoal~~ses
+#estimating the residual variances for endogenous variables (interest, anxiety, achieve)
+interest~~interest
+anxiety~~anxiety
+achieve~~achieve
+#estimating the covariance of residuals for interest and anxiety
+interest~~anxiety'
+
+Step 2: Use 'lavaan' function to run analysis. Here, I will be saving 
+the results in an R object called 'fit' (arbitrarily named). Inside 
+the parenthesis are arguments separated by commas. The first argument
+contains the name of the object containing the model syntax (see above).
+The object is named 'model' (again, arbitrarily named above). Next, we
+have the 'data' argument. This identifies the object (i.e., data frame) 
+containing the raw data.
+
+fit<-lavaan(model,data=processdata)
+
+*The 'summary' function can be used to obtain various fit measures and the 
+parameter estimates for the model
+
+summary(fit,fit.measures=TRUE)
+
+*To obtain standardized estimates, use the 'standardized' argument (setting 
+it to TRUE) when using the 'summary' function. You will need to interpret the 
+Std.all column in the output, as it will provide standardized estimates for all
+measured variables in the model.
+
+summary(fit,fit.measures=TRUE,standardized=TRUE,rsquare=TRUE)
+
+*Using the 'parameterEstimates' function, you can obtain confidence intervals
+parameterEstimates(fit)
+
+*For a more comprehensive set of fit measures, use the 'fitMeasures' function
+
+fitMeasures(fit)
+
+*To obtain modification indices, you can use the 'modificationIndices' function
+
+modificationIndices(fit)
+
+*Note: Modification indices represent the expected decrease in model chi-square 
+after freeing a given parameter (Schumacker & Lomax, 2004). The EPC is an 
+estimate of the model parameter itself. A MI value of 3.84 or greater may be 
+considered "significant" (at the .05) level. Warning: This is totally an 
+empirically based approach to model specification. Consult your theory when 
+using these!  
+
+-----------------------------
+*Specification of model using auto.var argument...
+
+#model specification
+
+model<-'
+#equation where interest is predicted by ses & mastery and 
+#performance goals
+interest~mastery+perfgoal+ses
+#equation where achieve is predicted by interest and anxiety
+achieve~anxiety+interest+mastery
+#equation where anxiety is predicted by mastery and performance goals
+anxiety~perfgoal+mastery
+#estimtating the variances of the exogenous variables (ses, mastery,performance)
+mastery~~mastery
+perfgoal~~perfgoal
+ses~~ses
+#estimtating the covariances of the exogenous variables (ses, mastery,performance)
+mastery~~perfgoal+ses
+perfgoal~~ses
+#The auto.var argument when fitting the model can be used so that 
+#you do not have to directly request estimation of residual variances
+#Estimating the covariance of residuals for interest and anxiety
+interest~~anxiety'
+
+fit<-lavaan(model,data=processdata,auto.var=TRUE)
+
+summary(fit,fit.measures=TRUE,standardized=TRUE,rsquare=TRUE)
+
+-----------------------------
+*There are a couple of ways you can obtain path diagrams (although they can
+be somewhat tricky to implement. 
+
+*One approach is to use the 'semPaths' function from the 'semPlot' package.
+Below, I provide a rough demo of this approach. Citations containing 
+additional information is provided below the demo.
+
+install.packages("semPlot")
+library("semPlot")
+
+semPaths(fit,what="paths",whatLabels="par",style="lisrel",layout="tree",
+rotation=2)
+
+*A second approach is to use the 'lavaanPlot" function from the 'lavaanPlot'
+package.
+
+install.packages("lavaanPlot")
+
+library(lavaanPlot)
+
+lavaanPlot(model = fit, node_options = list(shape = "box", fontname = 
+"Helvetica"), edge_options = list(color = "grey"), coefs = TRUE,covs=
+TRUE,stars = c("regress"))
+
+-----------------------------
+Resources on the use of lavaan:
+
+http://lavaan.ugent.be/tutorial/tutorial.pdf
+https://www.jstatsoft.org/index.php/jss/article/view/v048i02/v48i02.pdf
+https://cran.r-project.org/web/packages/lavaan/lavaan.pdf
+http://lavaan.ugent.be/tutorial/index.html
+-----------------------------
+Using the 'semPlot' package
+
+https://cran.r-project.org/web/packages/semPlot/semPlot.pdf
+https://www.rdocumentation.org/packages/semPlot/versions/1.1.2/topics/semPaths
+http://sachaepskamp.com/semPlot/examples
+-----------------------------
+Using the 'lavaanPlot' package
+
+https://cran.r-project.org/web/packages/lavaanPlot/lavaanPlot.pdf
+https://cran.r-project.org/web/packages/lavaanPlot/vignettes/Intro_to_lavaanPlot.html
+https://cran.rstudio.com/web/packages/lavaanPlot/vignettes/Intro_to_lavaanPlot.html
+http://www.alexlishinski.com/post/2018-04-13-lavaanplot0.5/
+
+-----------------------------------
+
+Raw data for all examples can be downloaded at...
+
+https://drive.google.com/open?id=1Ge0kIn7-f6gSfL40mZ47zGFH5WNSXRBt
+
+A copy of the Powerpoint of the model specification can be downloaded at...
+
+https://drive.google.com/open?id=1Nvpz7RnBEfEzK1VJKZksy6PBO4mzbdLO
