@@ -72,5 +72,5 @@ semPaths(fit)
 
 # ezknitr::ezspin(file = "Program/SEM_amorpcanes.R", out_dir = "Output", keep_rmd = F, keep_md = F)
 
-
+# test
 #https://nmmichalak.github.io/nicholas_michalak/blog_entries/2018/nrg01/nrg01.html 
