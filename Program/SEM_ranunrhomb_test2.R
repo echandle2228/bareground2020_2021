@@ -18,9 +18,8 @@ str(ranun.rhomb)
 #' ### Path analysis model specification
 model<-'
 # DOBG is predicted by TSNOW, AGDU, and SPDX
-DOBG ~ 1+ a*TSNOW + A*AGDU + e*SPDX
-SPDX ~ 1+ C*AGDU + c*TSNOW
-FFD ~ 1+ b*DOBG + d*SPDX + f*AGDU
+DOBG ~ 1+ a*TSNOW + A*AGDU
+FFD ~ 1+ b*DOBG + f*AGDU
 #estimtating the variances of the exogenous variables 
 TSNOW ~~ TSNOW
 AGDU ~~ AGDU
@@ -28,18 +27,11 @@ AGDU ~~ AGDU
 TSNOW ~~ AGDU
 #estimating the residual variances for endogenous variables (interest, anxiety, achieve)
 DOBG ~~ DOBG
-SPDX ~~ SPDX
 FFD ~~ FFD
 #Indirect effects of TSNOW on FFD
 TSNOWie1:= 1+ a*b
-TSNOWie2:= 1+ c*d
-TSNOWiet:= 1+ TSNOWie1 + TSNOWie2
 #Indirect effects of AGDU on FFD
 AGDUie1:= 1+ A*b
-AGDUie2:= 1+ C*d
-AGDUiet:= 1+ AGDUie1 + AGDUie2 + f
-#Indirect effect of SPDX on FFD
-SPDXie1:= 1+ e*b
 TSNOW ~ 1
 AGDU ~ 1'
 
