@@ -1,4 +1,4 @@
-#' # Path analysis for phenology project: Ranunculus rhomboideus 
+#' # Path analysis for phenology project
 
 
 remove(list = ls())

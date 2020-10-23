@@ -10,9 +10,9 @@ library(lavaanPlot)
 library(modelsummary)
 
 #' Load Data
-ranun.rhomb <- read.csv( file = "Data/ranun.rhomb.csv", 
+ceras.arven <- read.csv( file = "Data/ceras.arven.csv", 
                 header = T, stringsAsFactors = F)
-str(ranun.rhomb)
+str(ceras.arven)
 
 
 #' ### Path analysis model specification
@@ -36,7 +36,7 @@ TSNOW ~ 1
 AGDU ~ 1'
 
 #' ### Lavaan function
-fit<-lavaan(model,data=ranun.rhomb, missing = "fiml")
+fit<-lavaan(model,data=ceras.arven, missing = "fiml")
 summary(fit,fit.measures=TRUE)
 modelsummary(fit)
 
