@@ -9,6 +9,7 @@ library(gridExtra)
 library(grid)
 library(lattice)
 library(ggpubr)
+library(extrafont)
 
 #' 
 #' 
@@ -84,7 +85,375 @@ lm_zigad.elaga <- lm(data = zigad.elaga, FFD ~ TSNOW)
 lm_zizia.aurea <- lm(data = zizia.aurea, FFD ~ TSNOW)
 
 
-#' ## Linear model and individual plots for each species
+
+#' ### ggscatter method with grid.arrange
+AM <- ggscatter(achil.mille, x = "TSNOW", y = "FFD", size = 1, add = "reg.line") +
+  stat_cor(aes(label = paste(..rr.label.., ..p.label.., sep = "~`,`~")),
+    label.x.npc = "left",            
+    label.y = 130) +
+  theme_classic() +
+  ylim(125,170)+
+  ggtitle("Achillea millefolium") +
+  xlab("") + ylab("") +
+  theme(title = element_text(face="italic"),         
+        axis.text.y=element_text(size=10, colour = "black"),         
+        axis.title.y=element_text(size=2, colour = "black"),         
+        axis.text.x=element_text(size = 10, colour = "black"),                  
+        axis.title.x=element_text(size = 2, colour = "black"),         
+        plot.margin=unit(c(0.5,0,0,0), "cm"))
+# plot(AM)
+
+AC <- ggscatter(amorp.canes, x = "TSNOW", y = "FFD", size = 1, add = "reg.line") +
+  stat_cor(aes(label = paste(..rr.label.., ..p.label.., sep = "~`,`~")),
+    label.x.npc = "left",            
+    label.y = 150) + 
+  theme_classic() +
+  ylim(145,195)+
+  ggtitle("Amorpha canescens") +
+  xlab("") + ylab("") +
+  theme(title = element_text(face="italic"),         
+        axis.text.y=element_text(size=10, colour = "black"),         
+        axis.title.y=element_text(size=2, colour = "black"),         
+        axis.text.x=element_text(size = 10, colour = "black"),                  
+        axis.title.x=element_text(size = 2, colour = "black"),                  
+        plot.margin=unit(c(0.5,0,0,0), "cm"))
+# plot(AC)
+
+AnC <- ggscatter(anemo.canad, x = "TSNOW", y = "FFD", size = 1, add = "reg.line") +
+  stat_cor(aes(label = paste(..rr.label.., ..p.label.., sep = "~`,`~")),
+    label.x.npc = "left",            
+    label.y = 130) +
+  theme_classic() +
+  ylim(125,170)+
+  ggtitle("Anemone canadensis") +
+  xlab("") + ylab("") +
+  theme(title = element_text(face="italic"),         
+        axis.text.y=element_text(size=10, colour = "black"),         
+        axis.title.y=element_text(size=2, colour = "black"),         
+        axis.text.x=element_text(size = 10, colour = "black"),                  
+        axis.title.x=element_text(size = 2, colour = "black"),                  
+        plot.margin=unit(c(0.5,0,0,0), "cm"))
+# plot(AnC)
+
+AP <- ggscatter(anemo.paten, x = "TSNOW", y = "FFD", size = 1, add = "reg.line") + 
+  stat_cor(aes(label = paste(..rr.label.., ..p.label.., sep = "~`,`~")),
+    label.x.npc = "left",            
+    label.y = 75) +
+  theme_classic() +
+  ylim(70,160)+
+  ggtitle("Anemone patens") +
+  xlab("") + ylab("") +
+  theme(title = element_text(face="italic"),         
+        axis.text.y=element_text(size=10, colour = "black"),         
+        axis.title.y=element_text(size=2, colour = "black"),         
+        axis.text.x=element_text(size = 10, colour = "black"),                  
+        axis.title.x=element_text(size = 2, colour = "black"),                  
+        plot.margin=unit(c(0.5,0,0,0), "cm"))
+# plot(AP)
+
+CP <- ggscatter(calth.palus, x = "TSNOW", y = "FFD", size = 1, add = "reg.line") + 
+  stat_cor(aes(label = paste(..rr.label.., ..p.label.., sep = "~`,`~")),
+           label.x.npc = "left",            
+           label.y = 100) +
+  theme_classic() +
+  ylim(95,140)+
+  ggtitle("Caltha palustris") +
+  xlab("") + ylab("") +
+  theme(title = element_text(face="italic"),         
+        axis.text.y=element_text(size=10, colour = "black"),         
+        axis.title.y=element_text(size=2, colour = "black"),         
+        axis.text.x=element_text(size = 10, colour = "black"),                  
+        axis.title.x=element_text(size = 2, colour = "black"),                  
+        plot.margin=unit(c(0.5,0,0,0), "cm"))
+# plot(CP)
+
+CC <- ggscatter(cypri.candi, x = "TSNOW", y = "FFD", size = 1, add = "reg.line") + 
+  stat_cor(aes(label = paste(..rr.label.., ..p.label.., sep = "~`,`~")),
+           label.x.npc = "left",            
+           label.y = 140) +
+  theme_classic() +
+  ylim(135,160)+
+  ggtitle("Cypripedium candidum") +
+  xlab("") + ylab("") +
+  theme(title = element_text(face="italic"),         
+        axis.text.y=element_text(size=10, colour = "black"),         
+        axis.title.y=element_text(size=2, colour = "black"),         
+        axis.text.x=element_text(size = 10, colour = "black"),                  
+        axis.title.x=element_text(size = 2, colour = "black"),                  
+        plot.margin=unit(c(0.5,0,0,0), "cm"))
+# plot(CC)
+
+CR <- ggscatter(campa.rotun, x = "TSNOW", y = "FFD", size = 1, add = "reg.line") + 
+  stat_cor(aes(label = paste(..rr.label.., ..p.label.., sep = "~`,`~")),
+           label.x.npc = "left",            
+           label.y = 155) +
+  theme_classic() +
+  ylim(150,220)+
+  ggtitle("Campanula rotundifolia") +
+  xlab("") + ylab("") +
+  theme(title = element_text(face="italic"),         
+        axis.text.y=element_text(size=10, colour = "black"),         
+        axis.title.y=element_text(size=2, colour = "black"),         
+        axis.text.x=element_text(size = 10, colour = "black"),                  
+        axis.title.x=element_text(size = 2, colour = "black"),                  
+        plot.margin=unit(c(0.5,0,0,0), "cm"))
+# plot(CR)
+
+CA <- ggscatter(ceras.arven, x = "TSNOW", y = "FFD", size = 1, add = "reg.line") + 
+  stat_cor(aes(label = paste(..rr.label.., ..p.label.., sep = "~`,`~")),
+           label.x.npc = "left",            
+           label.y = 110) +
+  theme_classic() +
+  ylim(105,150)+
+  ggtitle("Cerastium arvense") +
+  xlab("") + ylab("") +
+  theme(title = element_text(face="italic"),         
+        axis.text.y=element_text(size=10, colour = "black"),         
+        axis.title.y=element_text(size=2, colour = "black"),         
+        axis.text.x=element_text(size = 10, colour = "black"),                  
+        axis.title.x=element_text(size = 2, colour = "black"),                  
+        plot.margin=unit(c(0.5,0,0,0), "cm"))
+# plot(CA)
+
+LC <- ggscatter(litho.canes, x = "TSNOW", y = "FFD", size = 1, add = "reg.line") + 
+  stat_cor(aes(label = paste(..rr.label.., ..p.label.., sep = "~`,`~")),
+           label.x.npc = "left",            
+           label.y = 110) +
+  theme_classic() +
+  ylim(105,150)+
+  ggtitle("Lithospermum canescens") +
+  xlab("") + ylab("") +
+  theme(title = element_text(face="italic"),         
+        axis.text.y=element_text(size=10, colour = "black"),         
+        axis.title.y=element_text(size=2, colour = "black"),         
+        axis.text.x=element_text(size = 10, colour = "black"),                  
+        axis.title.x=element_text(size = 2, colour = "black"),                  
+        plot.margin=unit(c(0.5,0,0,0), "cm"))
+# plot(LC)
+
+ON <- ggscatter(oenot.nutta, x = "TSNOW", y = "FFD", size = 1, add = "reg.line") + 
+  stat_cor(aes(label = paste(..rr.label.., ..p.label.., sep = "~`,`~")),
+           label.x.npc = "left",            
+           label.y = 160) +
+  theme_classic() +
+  ylim(155,240)+
+  ggtitle("Oenothera nuttallii") +
+  xlab("") + ylab("") +
+  theme(title = element_text(face="italic"),         
+        axis.text.y=element_text(size=10, colour = "black"),         
+        axis.title.y=element_text(size=2, colour = "black"),         
+        axis.text.x=element_text(size = 10, colour = "black"),                  
+        axis.title.x=element_text(size = 2, colour = "black"),                  
+        plot.margin=unit(c(0.5,0,0,0), "cm"))
+# plot(ON)
+
+OV <- ggscatter(oxali.viola, x = "TSNOW", y = "FFD", size = 1, add = "reg.line") + 
+  stat_cor(aes(label = paste(..rr.label.., ..p.label.., sep = "~`,`~")),
+           label.x.npc = "left",            
+           label.y = 115) +
+  theme_classic() +
+  ylim(110,150)+
+  ggtitle("Oxalis violacea") +
+  xlab("") + ylab("") +
+  theme(title = element_text(face="italic"),         
+        axis.text.y=element_text(size=10, colour = "black"),         
+        axis.title.y=element_text(size=2, colour = "black"),         
+        axis.text.x=element_text(size = 10, colour = "black"),                  
+        axis.title.x=element_text(size = 2, colour = "black"),                  
+        plot.margin=unit(c(0.5,0,0,0), "cm"))
+# plot(OV)
+
+OL <- ggscatter(oxytr.lambe, x = "TSNOW", y = "FFD", size = 1, add = "reg.line") + 
+  stat_cor(aes(label = paste(..rr.label.., ..p.label.., sep = "~`,`~")),
+           label.x.npc = "left",            
+           label.y = 145) +
+  theme_classic() +
+  ylim(140,185)+
+  ggtitle("Oxytre lambe") +
+  xlab("") + ylab("") +
+  theme(title = element_text(face="italic"),         
+        axis.text.y=element_text(size=10, colour = "black"),         
+        axis.title.y=element_text(size=2, colour = "black"),         
+        axis.text.x=element_text(size = 10, colour = "black"),                  
+        axis.title.x=element_text(size = 2, colour = "black"),                  
+        plot.margin=unit(c(0.5,0,0,0), "cm"))
+# plot(OL)
+
+PC <- ggscatter(pedic.canad, x = "TSNOW", y = "FFD", size = 1, add = "reg.line") + 
+  stat_cor(aes(label = paste(..rr.label.., ..p.label.., sep = "~`,`~")),
+           label.x.npc = "left",            
+           label.y = 125) +
+  theme_classic() +
+  ylim(120,155)+
+  ggtitle("Pedicularis canadensis") +
+  xlab("") + ylab("") +
+  theme(title = element_text(face="italic"),         
+        axis.text.y=element_text(size=10, colour = "black"),         
+        axis.title.y=element_text(size=2, colour = "black"),         
+        axis.text.x=element_text(size = 10, colour = "black"),                  
+        axis.title.x=element_text(size = 2, colour = "black"),                  
+        plot.margin=unit(c(0.5,0,0,0), "cm"))
+# plot(PC)
+
+PG <- ggscatter(penst.graci, x = "TSNOW", y = "FFD", size = 1, add = "reg.line") + 
+  stat_cor(aes(label = paste(..rr.label.., ..p.label.., sep = "~`,`~")),
+           label.x.npc = "left",            
+           label.y = 150) +
+  theme_classic() +
+  ylim(145,175)+
+  ggtitle("Penstemon gracilis") +
+  xlab("") + ylab("") +
+  theme(title = element_text(face="italic"),         
+        axis.text.y=element_text(size=10, colour = "black"),         
+        axis.title.y=element_text(size=2, colour = "black"),         
+        axis.text.x=element_text(size = 10, colour = "black"),                  
+        axis.title.x=element_text(size = 2, colour = "black"),                  
+        plot.margin=unit(c(0.5,0,0,0), "cm"))
+# plot(PG)
+
+PeG <- ggscatter(penst.grand, x = "TSNOW", y = "FFD", size = 1, add = "reg.line") + 
+  stat_cor(aes(label = paste(..rr.label.., ..p.label.., sep = "~`,`~")),
+           label.x.npc = "left",            
+           label.y = 150) +
+  theme_classic() +
+  ylim(145,175)+
+  ggtitle("Penstemon grandiflorus") +
+  xlab("") + ylab("") +
+  theme(title = element_text(face="italic"),         
+        axis.text.y=element_text(size=10, colour = "black"),         
+        axis.title.y=element_text(size=2, colour = "black"),         
+        axis.text.x=element_text(size = 10, colour = "black"),                  
+        axis.title.x=element_text(size = 2, colour = "black"),                  
+        plot.margin=unit(c(0.5,0,0,0), "cm"))
+# plot(PeG)
+
+RR <- ggscatter(ranun.rhomb, x = "TSNOW", y = "FFD", size = 1, add = "reg.line") + 
+  stat_cor(aes(label = paste(..rr.label.., ..p.label.., sep = "~`,`~")),
+           label.x.npc = "left",
+           label.y = 90) +
+  theme_classic() +
+  ylim(85,140)+
+  ggtitle("Ranunculus rhomboides") +
+  xlab("") + ylab("") +
+  theme(title = element_text(face="italic"),         
+        axis.text.y=element_text(size=10, colour = "black"),         
+        axis.title.y=element_text(size=2, colour = "black"),         
+        axis.text.x=element_text(size = 10, colour = "black"),                  
+        axis.title.x=element_text(size = 2, colour = "black"),                  
+        plot.margin=unit(c(0.5,0,0,0), "cm"))
+# plot(RR)
+
+RA <- ggscatter(rosa.arkan, x = "TSNOW", y = "FFD", size = 1, add = "reg.line") + 
+  stat_cor(aes(label = paste(..rr.label.., ..p.label.., sep = "~`,`~")),
+           label.x.npc = "left",            
+           label.y = 145) +
+  theme_classic() +
+  ylim(140,180)+
+  ggtitle("Rosa arkansana") +
+  xlab("") + ylab("") +
+  theme(title = element_text(face="italic"),         
+        axis.text.y=element_text(size=10, colour = "black"),         
+        axis.title.y=element_text(size=2, colour = "black"),         
+        axis.text.x=element_text(size = 10, colour = "black"),                  
+        axis.title.x=element_text(size = 2, colour = "black"),                  
+        plot.margin=unit(c(0.5,0,0,0), "cm"))
+# plot(RA)
+
+SA <- ggscatter(sisy.angus, x = "TSNOW", y = "FFD", size = 1, add = "reg.line") + 
+  stat_cor(aes(label = paste(..rr.label.., ..p.label.., sep = "~`,`~")),
+           label.x.npc = "left",            
+           label.y = 115) +
+  theme_classic() +
+  ylim(110,155)+
+  ggtitle("Sisyrinchium angustifolium") +
+  xlab("") + ylab("") +
+  theme(title = element_text(face="italic"),         
+        axis.text.y=element_text(size=10, colour = "black"),         
+        axis.title.y=element_text(size=2, colour = "black"),         
+        axis.text.x=element_text(size = 10, colour = "black"),                  
+        axis.title.x=element_text(size = 2, colour = "black"),                  
+        plot.margin=unit(c(0.5,0,0,0), "cm"))
+# plot(SA)
+
+VA <- ggscatter(vicia.ameri, x = "TSNOW", y = "FFD", size = 1, add = "reg.line") + 
+  stat_cor(aes(label = paste(..rr.label.., ..p.label.., sep = "~`,`~")),
+           label.x.npc = "left",            
+           label.y = 130) +
+  theme_classic() +
+  ylim(125,170)+
+  ggtitle("Vicia americana") +
+  xlab("") + ylab("") +
+  theme(title = element_text(face="italic"),         
+        axis.text.y=element_text(size=10, colour = "black"),         
+        axis.title.y=element_text(size=2, colour = "black"),         
+        axis.text.x=element_text(size = 10, colour = "black"),                  
+        axis.title.x=element_text(size = 2, colour = "black"),                  
+        plot.margin=unit(c(0.5,0,0,0), "cm"))
+# plot(VA)
+
+
+ZE <- ggscatter(zigad.elaga, x = "TSNOW", y = "FFD", size = 1, add = "reg.line") + 
+  stat_cor(aes(label = paste(..rr.label.., ..p.label.., sep = "~`,`~")),
+           label.x.npc = "left",            
+           label.y = 155) +
+  theme_classic() +
+  ylim(150,190)+
+  ggtitle("Zigadenus elegans") +
+  xlab("") + ylab("") +
+  theme(title = element_text(face="italic"),
+        axis.text.y=element_text(size=10, colour = "black"),
+        axis.title.y=element_text(size=2, colour = "black"),
+        axis.text.x=element_text(size = 10, colour = "black"),         
+        axis.title.x=element_text(size = 2, colour = "black"),                  
+        plot.margin=unit(c(0.5,0,0,0), "cm"))
+# plot(ZE)
+
+ZA <- ggscatter(zizia.aurea, x = "TSNOW", y = "FFD", size = 1, add = "reg.line") + 
+  stat_cor(aes(label = paste(..rr.label.., ..p.label.., sep = "~`,`~")),
+           label.x.npc = "left",            
+           label.y = 120) +
+  theme_classic() +
+  xlim(0,30) +
+  ylim(115,170)+
+  ggtitle("Zizia aurea") +
+  xlab("") + ylab("") +
+  theme(title = element_text(face="italic"),         
+        axis.text.y=element_text(size=10, colour = "black"),         
+        axis.title.y=element_text(size=2, colour = "black"),         
+        axis.text.x=element_text(size = 10, colour = "black"),         
+        axis.title.x=element_text(size = 2, colour = "black"),         
+        plot.margin=unit(c(0.5,0,0,0), "cm"))
+# plot(ZA)
+
+
+
+TSNOW_FFD_grid <- grid.arrange(arrangeGrob(AM, AC, AnC, AP, CP, CR, CA, CC, LC, 
+                                           ON, OV, OL,PC, PG, PeG, RR, RA, SA, 
+                                           VA, ZE, ZA,
+                         ncol=3, nrow=7, 
+                         bottom = textGrob("TSNOW", vjust = 1),
+                         left = textGrob("FFD", rot = 90, vjust = 1)))
+pdf("Figures/TSNOW_FFD_grid.pdf",width = 8.5, height = 11) 
+grid.draw(TSNOW_FFD_grid) 
+dev.off()
+
+
+
+
+
+#' ### ggplot method with grid.arrange
+AM <- ggplot(achil.mille, aes(x = TSNOW, y = FFD)) +
+  geom_point() +
+  geom_smooth(method = "lm", col = "black") +
+  theme_classic() +
+  ggtitle("Achillea millefolium") +
+  xlab("") + ylab("") +
+  scale_x_continuous(limits = c(10,40), expand = c(0,0))
+plot(AM)
+
+
+
+#' ## Linear model and individual plots for each species using base R
 # jpeg(filename = "Figures/TSNOW_FFDcorrelations.jpeg")
 par()
 par(mfrow=c(7,3), mar=c(2,2,2,2), oma = c(1,1,1,1))
@@ -236,201 +605,5 @@ plot(zizia.aurea$TSNOW, zizia.aurea$FFD,
 abline(lm_zizia.aurea)
 # summary(lm_zizia.aurea)
 # dev.off()
-
-
-
-
-#' ### ggscatter method with grid.arrange
-AM <- ggscatter(achil.mille, x = "TSNOW", y = "FFD", add = "reg.line") +
-  stat_cor(aes(label = paste(..rr.label.., ..p.label.., sep = "~`,`~")),
-    label.x = 3) +
-  theme_bw() +
-  ggtitle("Achillea millefolium") +
-  xlab("") + ylab("")
-plot(AM)
-
-AC <- ggscatter(amorp.canes, x = "TSNOW", y = "FFD", add = "reg.line") +
-  stat_cor(aes(label = paste(..rr.label.., ..p.label.., sep = "~`,`~")),
-    label.x = 3) + 
-  theme_bw() +
-  ggtitle("Amorpha canescens") +
-  xlab("") + ylab("")
-plot(AC)
-
-AnC <- ggscatter(anemo.canad, x = "TSNOW", y = "FFD", add = "reg.line") +
-  stat_cor(aes(label = paste(..rr.label.., ..p.label.., sep = "~`,`~")),
-    label.x = 3) +
-  theme_bw() +
-  ggtitle("Anemone canadensis") +
-  xlab("") + ylab("")
-plot(AnC)
-
-AP <- ggscatter(anemo.paten, x = "TSNOW", y = "FFD", add = "reg.line") + 
-  stat_cor(aes(label = paste(..rr.label.., ..p.label.., sep = "~`,`~")),
-    label.x = 3) +
-  theme_bw() +
-  ggtitle("Anemone patens") +
-  xlab("") + ylab("")
-plot(AP)
-
-CP <- ggscatter(calth.palus, x = "TSNOW", y = "FFD", add = "reg.line") + 
-  stat_cor(aes(label = paste(..rr.label.., ..p.label.., sep = "~`,`~")),
-           label.x = 3) +
-  theme_bw() +
-  ggtitle("Caltha palustris") +
-  xlab("") + ylab("")
-plot(CP)
-
-CC <- ggscatter(cypri.candi, x = "TSNOW", y = "FFD", add = "reg.line") + 
-  stat_cor(aes(label = paste(..rr.label.., ..p.label.., sep = "~`,`~")),
-           label.x = 3) +
-  theme_bw() +
-  ggtitle("Cypripedium candidum") +
-  xlab("") + ylab("")
-plot(CC)
-
-CR <- ggscatter(campa.rotun, x = "TSNOW", y = "FFD", add = "reg.line") + 
-  stat_cor(aes(label = paste(..rr.label.., ..p.label.., sep = "~`,`~")),
-           label.x = 3) +
-  theme_bw() +
-  ggtitle("Campanula rotundifolia") +
-  xlab("") + ylab("")
-plot(CR)
-
-CA <- ggscatter(ceras.arven, x = "TSNOW", y = "FFD", add = "reg.line") + 
-  stat_cor(aes(label = paste(..rr.label.., ..p.label.., sep = "~`,`~")),
-           label.x = 3) +
-  theme_bw() +
-  ggtitle("Cerastium arvense") +
-  xlab("") + ylab("")
-plot(CA)
-
-LC <- ggscatter(litho.canes, x = "TSNOW", y = "FFD", add = "reg.line") + 
-  stat_cor(aes(label = paste(..rr.label.., ..p.label.., sep = "~`,`~")),
-           label.x = 3) +
-  theme_bw() +
-  ggtitle("Lithospermum canescens") +
-  xlab("") + ylab("")
-plot(LC)
-
-ON <- ggscatter(oenot.nutta, x = "TSNOW", y = "FFD", add = "reg.line") + 
-  stat_cor(aes(label = paste(..rr.label.., ..p.label.., sep = "~`,`~")),
-           label.x = 3) +
-  theme_bw() +
-  ggtitle("Oenothera nuttallii") +
-  xlab("") + ylab("")
-plot(ON)
-
-OV <- ggscatter(oxali.viola, x = "TSNOW", y = "FFD", add = "reg.line") + 
-  stat_cor(aes(label = paste(..rr.label.., ..p.label.., sep = "~`,`~")),
-           label.x = 3) +
-  theme_bw() +
-  ggtitle("Oxalis violacea") +
-  xlab("") + ylab("")
-plot(OV)
-
-OL <- ggscatter(oxytr.lambe, x = "TSNOW", y = "FFD", add = "reg.line") + 
-  stat_cor(aes(label = paste(..rr.label.., ..p.label.., sep = "~`,`~")),
-           label.x = 3) +
-  theme_bw() +
-  ggtitle("Oxytre lambe") +
-  xlab("") + ylab("")
-plot(OL)
-
-PC <- ggscatter(pedic.canad, x = "TSNOW", y = "FFD", add = "reg.line") + 
-  stat_cor(aes(label = paste(..rr.label.., ..p.label.., sep = "~`,`~")),
-           label.x = 3) +
-  theme_bw() +
-  ggtitle("Pedicularis canadensis") +
-  xlab("") + ylab("")
-plot(PC)
-
-PG <- ggscatter(penst.graci, x = "TSNOW", y = "FFD", add = "reg.line") + 
-  stat_cor(aes(label = paste(..rr.label.., ..p.label.., sep = "~`,`~")),
-           label.x = 3) +
-  theme_bw() +
-  ggtitle("Penstemon gracilis") +
-  xlab("") + ylab("")
-plot(PG)
-
-PeG <- ggscatter(penst.grand, x = "TSNOW", y = "FFD", add = "reg.line") + 
-  stat_cor(aes(label = paste(..rr.label.., ..p.label.., sep = "~`,`~")),
-           label.x = 3) +
-  theme_bw() +
-  ggtitle("Penstemon grandiflorus") +
-  xlab("") + ylab("")
-plot(PeG)
-
-RR <- ggscatter(ranun.rhomb, x = "TSNOW", y = "FFD", add = "reg.line") + 
-  stat_cor(aes(label = paste(..rr.label.., ..p.label.., sep = "~`,`~")),
-           label.x = 3) +
-  theme_bw() +
-  ggtitle("Ranunculus rhomboides") +
-  xlab("") + ylab("")
-plot(RR)
-
-RA <- ggscatter(rosa.arkan, x = "TSNOW", y = "FFD", add = "reg.line") + 
-  stat_cor(aes(label = paste(..rr.label.., ..p.label.., sep = "~`,`~")),
-           label.x = 3) +
-  theme_bw() +
-  ggtitle("Rosa arkansana") +
-  xlab("") + ylab("")
-plot(RA)
-
-SA <- ggscatter(sisy.angus, x = "TSNOW", y = "FFD", add = "reg.line") + 
-  stat_cor(aes(label = paste(..rr.label.., ..p.label.., sep = "~`,`~")),
-           label.x = 3) +
-  theme_bw() +
-  ggtitle("Sisyrinchium angustifolium") +
-  xlab("") + ylab("")
-plot(SA)
-
-VA <- ggscatter(vicia.ameri, x = "TSNOW", y = "FFD", add = "reg.line") + 
-  stat_cor(aes(label = paste(..rr.label.., ..p.label.., sep = "~`,`~")),
-           label.x = 3) +
-  theme_bw() +
-  ggtitle("Vicia americana") +
-  xlab("") + ylab("")
-plot(VA)
-
-ZE <- ggscatter(zigad.elaga, x = "TSNOW", y = "FFD", add = "reg.line") + 
-  stat_cor(aes(label = paste(..rr.label.., ..p.label.., sep = "~`,`~")),
-           label.x = 3) +
-  theme_bw() +
-  ggtitle("Zigadenus elegans") +
-  xlab("") + ylab("")
-plot(ZE)
-
-ZA <- ggscatter(zizia.aurea, x = "TSNOW", y = "FFD", add = "reg.line") + 
-  stat_cor(aes(label = paste(..rr.label.., ..p.label.., sep = "~`,`~")),
-           label.x = 3) +
-  theme_bw() +
-  ggtitle("Zizia aurea") +
-  xlab("") + ylab("")
-plot(ZA)
-
-
-
-TSNOW_FFD_grid <- grid.arrange(arrangeGrob(AM, AC, AnC, AP, CP, CR, CA, CC, LC, ON, OV, OL,
-                         PC, PG, PeG, RR, RA, SA, VA, ZE, ZA,
-                         ncol=3, nrow=7))
-pdf(file = "Figures/TSNOW_FFD_grid.pdf", width = "8.5", height = "11")
-
-
-
-
-
-#' ### ggplot method with grid.arrange
-AM <- ggplot(achil.mille, aes(x = TSNOW, y = FFD)) +
-  geom_point() +
-  geom_smooth(method = "lm", col = "black") +
-  theme_bw() +
-  ggtitle("Achillea millefolium") +
-  xlab("") + ylab("") +
-  scale_x_continuous(limits = c(10,40), expand = c(0,0))
-plot(AM)
-
-
-
 
 
