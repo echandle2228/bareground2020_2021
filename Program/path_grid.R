@@ -8,6 +8,9 @@ library(lavaan)
 library(sem)
 library(lavaanPlot)
 library(modelsummary)
+library(grid)
+library(lattice)
+library(gridExtra)
 
 #' Load Data
 achil.mille <- read.csv( file = "Data/achil.mille.csv", header = T, stringsAsFactors = F)
@@ -78,10 +81,10 @@ ZA_fit<-lavaan(model,data=zizia.aurea, missing = "fiml")
 
 
 #' ###  path plots
-lavaanPlot(model = AM_fit, node_options = list(shape = "box", fontname = "Helvetica"), 
+AM_PLOT <- lavaanPlot(model = AM_fit, node_options = list(shape = "box", fontname = "Helvetica"), 
            edge_options = list(color = "grey"), 
            coefs = TRUE,covs=TRUE,stars = c("regress"))
-lavaanPlot(model = AC_fit, node_options = list(shape = "box", fontname = "Helvetica"), 
+AC_PLOT <- lavaanPlot(model = AC_fit, node_options = list(shape = "box", fontname = "Helvetica"), 
            edge_options = list(color = "grey"), 
            coefs = TRUE,covs=TRUE,stars = c("regress"))
 lavaanPlot(model = AnC_fit, node_options = list(shape = "box", fontname = "Helvetica"), 
@@ -139,3 +142,7 @@ lavaanPlot(model = ZA_fit, node_options = list(shape = "box", fontname = "Helvet
            edge_options = list(color = "grey"), 
            coefs = TRUE,covs=TRUE,stars = c("regress"))
 
+grid.arrange(arrangeGrob(AM_PLOT, AC_PLOT,
+                         ncol=1, nrow=2, 
+                         bottom = textGrob("TSNOW", vjust = 1),
+                         left = textGrob("FFD", rot = 90, vjust = 1)))

@@ -196,7 +196,7 @@ CR <- ggscatter(campa.rotun, x = "TSNOW", y = "FFD", size = 1, add = "reg.line")
         axis.title.y=element_text(size=2, colour = "black"),         
         axis.text.x=element_text(size = 10, colour = "black"),                  
         axis.title.x=element_text(size = 2, colour = "black"),                  
-        plot.margin=unit(c(0.5,0,0,0), "cm"))
+        plot.margin=unit(c(0.5,0.5,0,0), "cm"))
 # plot(CR)
 
 CA <- ggscatter(ceras.arven, x = "TSNOW", y = "FFD", size = 1, add = "reg.line") + 
@@ -212,7 +212,7 @@ CA <- ggscatter(ceras.arven, x = "TSNOW", y = "FFD", size = 1, add = "reg.line")
         axis.title.y=element_text(size=2, colour = "black"),         
         axis.text.x=element_text(size = 10, colour = "black"),                  
         axis.title.x=element_text(size = 2, colour = "black"),                  
-        plot.margin=unit(c(0.5,0,0,0), "cm"))
+        plot.margin=unit(c(0.5,0.5,0,0), "cm"))
 # plot(CA)
 
 LC <- ggscatter(litho.canes, x = "TSNOW", y = "FFD", size = 1, add = "reg.line") + 
@@ -260,7 +260,7 @@ OV <- ggscatter(oxali.viola, x = "TSNOW", y = "FFD", size = 1, add = "reg.line")
         axis.title.y=element_text(size=2, colour = "black"),         
         axis.text.x=element_text(size = 10, colour = "black"),                  
         axis.title.x=element_text(size = 2, colour = "black"),                  
-        plot.margin=unit(c(0.5,0,0,0), "cm"))
+        plot.margin=unit(c(0.5,0.5,0,0), "cm"))
 # plot(OV)
 
 OL <- ggscatter(oxytr.lambe, x = "TSNOW", y = "FFD", size = 1, add = "reg.line") + 
@@ -276,7 +276,7 @@ OL <- ggscatter(oxytr.lambe, x = "TSNOW", y = "FFD", size = 1, add = "reg.line")
         axis.title.y=element_text(size=2, colour = "black"),         
         axis.text.x=element_text(size = 10, colour = "black"),                  
         axis.title.x=element_text(size = 2, colour = "black"),                  
-        plot.margin=unit(c(0.5,0,0,0), "cm"))
+        plot.margin=unit(c(0.5,0.5,0,0), "cm"))
 # plot(OL)
 
 PC <- ggscatter(pedic.canad, x = "TSNOW", y = "FFD", size = 1, add = "reg.line") + 
@@ -324,7 +324,7 @@ PeG <- ggscatter(penst.grand, x = "TSNOW", y = "FFD", size = 1, add = "reg.line"
         axis.title.y=element_text(size=2, colour = "black"),         
         axis.text.x=element_text(size = 10, colour = "black"),                  
         axis.title.x=element_text(size = 2, colour = "black"),                  
-        plot.margin=unit(c(0.5,0,0,0), "cm"))
+        plot.margin=unit(c(0.5,0.5,0,0), "cm"))
 # plot(PeG)
 
 RR <- ggscatter(ranun.rhomb, x = "TSNOW", y = "FFD", size = 1, add = "reg.line") + 
@@ -372,7 +372,7 @@ SA <- ggscatter(sisy.angus, x = "TSNOW", y = "FFD", size = 1, add = "reg.line") 
         axis.title.y=element_text(size=2, colour = "black"),         
         axis.text.x=element_text(size = 10, colour = "black"),                  
         axis.title.x=element_text(size = 2, colour = "black"),                  
-        plot.margin=unit(c(0.5,0,0,0), "cm"))
+        plot.margin=unit(c(0.5,0.5,0,0), "cm"))
 # plot(SA)
 
 VA <- ggscatter(vicia.ameri, x = "TSNOW", y = "FFD", size = 1, add = "reg.line") + 
@@ -405,7 +405,7 @@ ZE <- ggscatter(zigad.elaga, x = "TSNOW", y = "FFD", size = 1, add = "reg.line")
         axis.title.y=element_text(size=2, colour = "black"),
         axis.text.x=element_text(size = 10, colour = "black"),         
         axis.title.x=element_text(size = 2, colour = "black"),                  
-        plot.margin=unit(c(0.5,0,0,0), "cm"))
+        plot.margin=unit(c(0.5,0.5,0,0), "cm"))
 # plot(ZE)
 
 ZA <- ggscatter(zizia.aurea, x = "TSNOW", y = "FFD", size = 1, add = "reg.line") + 
@@ -440,170 +440,170 @@ dev.off()
 
 
 
-
-#' ### ggplot method with grid.arrange
-AM <- ggplot(achil.mille, aes(x = TSNOW, y = FFD)) +
-  geom_point() +
-  geom_smooth(method = "lm", col = "black") +
-  theme_classic() +
-  ggtitle("Achillea millefolium") +
-  xlab("") + ylab("") +
-  scale_x_continuous(limits = c(10,40), expand = c(0,0))
-plot(AM)
-
-
-
-#' ## Linear model and individual plots for each species using base R
-# jpeg(filename = "Figures/TSNOW_FFDcorrelations.jpeg")
-par()
-par(mfrow=c(7,3), mar=c(2,2,2,2), oma = c(1,1,1,1))
-
-plot(achil.mille$TSNOW, achil.mille$FFD,
-     main = "Achillea millefolium",
-     xlab = "",
-     ylab = "")
-abline(lm_achil.mille)
-# summary(lm_achil.mille)
-
-plot(amorp.canes$TSNOW, amorp.canes$FFD,
-     main = "Amorpha canescens",
-     xlab = "",
-     ylab = "")
-abline(lm_amorp.canes)
-# summary(lm_amorp.canes)
-
-plot(anemo.canad$TSNOW, anemo.canad$FFD,
-     main = "Anemone canadensis",
-     xlab = "",
-     ylab = "")
-abline(lm_anemo.canad)
-# summary(lm_anemo.canad)
-
-plot(anemo.paten$TSNOW, anemo.paten$FFD,
-     main = "Anemone patens",
-     xlab = "",
-     ylab = "")
-abline(lm_anemo.paten)
-# summary(lm_anemo.paten)
-
-plot(calth.palus$TSNOW, calth.palus$FFD,
-     main = "Caltha palustris",
-     xlab = "",
-     ylab = "")
-abline(lm_calth.palus)
-# summary(lm_calth.palus)
-
-plot(campa.rotun$TSNOW, campa.rotun$FFD,
-     main = "Campanula rotundifolia",
-     xlab = "",
-     ylab = "")
-abline(lm_campa.rotun)
-# summary(lm_campa.rotun)
-
-plot(ceras.arven$TSNOW, ceras.arven$FFD,
-     main = "Cerastium arvense",
-     xlab = "",
-     ylab = "")
-abline(lm_ceras.arven)
-# summary(lm_ceras.arven)
-
-plot(cypri.candi$TSNOW, cypri.candi$FFD,
-     main = "Cypripedium candidum",
-     xlab = "",
-     ylab = "")
-abline(lm_cypri.candi)
-# summary(lm_cypri.candi)
-
-plot(litho.canes$TSNOW, litho.canes$FFD,
-     main = "Lithospermum canescens",
-     xlab = "",
-     ylab = "")
-abline(lm_litho.canes)
-# summary(lm_litho.canes)
-
-plot(oenot.nutta$TSNOW, oenot.nutta$FFD,
-     main = "Oenothera nuttallii",
-     xlab = "",
-     ylab = "")
-abline(lm_oenot.nutta)
-# summary(lm_oenot.nutta)
-
-plot(oxali.viola$TSNOW, oxali.viola$FFD,
-     main = "Oxalis violacea",
-     xlab = "",
-     ylab = "")
-abline(lm_oxali.viola)
-# summary(lm_oxali.viola)
-
-plot(oxytr.lambe$TSNOW, oxytr.lambe$FFD,
-     main = "Oxytre lambe",
-     xlab = "",
-     ylab = "")
-abline(lm_oxytr.lambe)
-# summary(lm_oxytr.lambe)
-
-plot(pedic.canad$TSNOW, pedic.canad$FFD,
-     main = "Pedicularis canadensis",
-     xlab = "",
-     ylab = "")
-abline(lm_pedic.canad)
-# summary(lm_pedic.canad)
-
-plot(penst.graci$TSNOW, penst.graci$FFD,
-     main = "Penstemon gracilis",
-     xlab = "",
-     ylab = "")
-abline(lm_penst.graci)
-# summary(lm_penst.graci)
-
-plot(penst.grand$TSNOW, penst.grand$FFD,
-     main = "Penstemon grandiflorus",
-     xlab = "",
-     ylab = "")
-abline(lm_penst.grand)
-# summary(lm_penst.grand)
-
-plot(ranun.rhomb$TSNOW, ranun.rhomb$FFD,
-     main = "Ranunculus rhomboides",
-     xlab = "",
-     ylab = "")
-abline(lm_ranun.rhomb)
-# summary(lm_ranun.rhomb)
-
-plot(rosa.arkan$TSNOW, rosa.arkan$FFD,
-     main = "Rosa arkansana",
-     xlab = "",
-     ylab = "")
-abline(lm_rosa.arkan)
-# summary(lm_rosa.arkan)
-
-plot(sisy.angus$TSNOW, sisy.angus$FFD,
-     main = "Sisyrinchium angustifolium",
-     xlab = "",
-     ylab = "")
-abline(lm_sisy.angus)
-# summary(lm_sisy.angus)
-
-plot(vicia.ameri$TSNOW, vicia.ameri$FFD,
-     main = "Vicia americana",
-     xlab = "",
-     ylab = "")
-abline(lm_vicia.ameri)
-# summary(lm_vicia.ameri)
-
-plot(zigad.elaga$TSNOW, zigad.elaga$FFD,
-     main = "Zigadenus elegans",
-     xlab = "",
-     ylab = "")
-abline(lm_zigad.elaga)
-# summary(lm_zigad.elaga)
-
-plot(zizia.aurea$TSNOW, zizia.aurea$FFD,
-     main = "Zizia aurea",
-     xlab = "",
-     ylab = "")
-abline(lm_zizia.aurea)
-# summary(lm_zizia.aurea)
-# dev.off()
-
-
+#' 
+#' #' ### ggplot method with grid.arrange
+#' AM <- ggplot(achil.mille, aes(x = TSNOW, y = FFD)) +
+#'   geom_point() +
+#'   geom_smooth(method = "lm", col = "black") +
+#'   theme_classic() +
+#'   ggtitle("Achillea millefolium") +
+#'   xlab("") + ylab("") +
+#'   scale_x_continuous(limits = c(10,40), expand = c(0,0))
+#' plot(AM)
+#' 
+#' 
+#' 
+#' #' ## Linear model and individual plots for each species using base R
+#' # jpeg(filename = "Figures/TSNOW_FFDcorrelations.jpeg")
+#' par()
+#' par(mfrow=c(7,3), mar=c(2,2,2,2), oma = c(1,1,1,1))
+#' 
+#' plot(achil.mille$TSNOW, achil.mille$FFD,
+#'      main = "Achillea millefolium",
+#'      xlab = "",
+#'      ylab = "")
+#' abline(lm_achil.mille)
+#' # summary(lm_achil.mille)
+#' 
+#' plot(amorp.canes$TSNOW, amorp.canes$FFD,
+#'      main = "Amorpha canescens",
+#'      xlab = "",
+#'      ylab = "")
+#' abline(lm_amorp.canes)
+#' # summary(lm_amorp.canes)
+#' 
+#' plot(anemo.canad$TSNOW, anemo.canad$FFD,
+#'      main = "Anemone canadensis",
+#'      xlab = "",
+#'      ylab = "")
+#' abline(lm_anemo.canad)
+#' # summary(lm_anemo.canad)
+#' 
+#' plot(anemo.paten$TSNOW, anemo.paten$FFD,
+#'      main = "Anemone patens",
+#'      xlab = "",
+#'      ylab = "")
+#' abline(lm_anemo.paten)
+#' # summary(lm_anemo.paten)
+#' 
+#' plot(calth.palus$TSNOW, calth.palus$FFD,
+#'      main = "Caltha palustris",
+#'      xlab = "",
+#'      ylab = "")
+#' abline(lm_calth.palus)
+#' # summary(lm_calth.palus)
+#' 
+#' plot(campa.rotun$TSNOW, campa.rotun$FFD,
+#'      main = "Campanula rotundifolia",
+#'      xlab = "",
+#'      ylab = "")
+#' abline(lm_campa.rotun)
+#' # summary(lm_campa.rotun)
+#' 
+#' plot(ceras.arven$TSNOW, ceras.arven$FFD,
+#'      main = "Cerastium arvense",
+#'      xlab = "",
+#'      ylab = "")
+#' abline(lm_ceras.arven)
+#' # summary(lm_ceras.arven)
+#' 
+#' plot(cypri.candi$TSNOW, cypri.candi$FFD,
+#'      main = "Cypripedium candidum",
+#'      xlab = "",
+#'      ylab = "")
+#' abline(lm_cypri.candi)
+#' # summary(lm_cypri.candi)
+#' 
+#' plot(litho.canes$TSNOW, litho.canes$FFD,
+#'      main = "Lithospermum canescens",
+#'      xlab = "",
+#'      ylab = "")
+#' abline(lm_litho.canes)
+#' # summary(lm_litho.canes)
+#' 
+#' plot(oenot.nutta$TSNOW, oenot.nutta$FFD,
+#'      main = "Oenothera nuttallii",
+#'      xlab = "",
+#'      ylab = "")
+#' abline(lm_oenot.nutta)
+#' # summary(lm_oenot.nutta)
+#' 
+#' plot(oxali.viola$TSNOW, oxali.viola$FFD,
+#'      main = "Oxalis violacea",
+#'      xlab = "",
+#'      ylab = "")
+#' abline(lm_oxali.viola)
+#' # summary(lm_oxali.viola)
+#' 
+#' plot(oxytr.lambe$TSNOW, oxytr.lambe$FFD,
+#'      main = "Oxytre lambe",
+#'      xlab = "",
+#'      ylab = "")
+#' abline(lm_oxytr.lambe)
+#' # summary(lm_oxytr.lambe)
+#' 
+#' plot(pedic.canad$TSNOW, pedic.canad$FFD,
+#'      main = "Pedicularis canadensis",
+#'      xlab = "",
+#'      ylab = "")
+#' abline(lm_pedic.canad)
+#' # summary(lm_pedic.canad)
+#' 
+#' plot(penst.graci$TSNOW, penst.graci$FFD,
+#'      main = "Penstemon gracilis",
+#'      xlab = "",
+#'      ylab = "")
+#' abline(lm_penst.graci)
+#' # summary(lm_penst.graci)
+#' 
+#' plot(penst.grand$TSNOW, penst.grand$FFD,
+#'      main = "Penstemon grandiflorus",
+#'      xlab = "",
+#'      ylab = "")
+#' abline(lm_penst.grand)
+#' # summary(lm_penst.grand)
+#' 
+#' plot(ranun.rhomb$TSNOW, ranun.rhomb$FFD,
+#'      main = "Ranunculus rhomboides",
+#'      xlab = "",
+#'      ylab = "")
+#' abline(lm_ranun.rhomb)
+#' # summary(lm_ranun.rhomb)
+#' 
+#' plot(rosa.arkan$TSNOW, rosa.arkan$FFD,
+#'      main = "Rosa arkansana",
+#'      xlab = "",
+#'      ylab = "")
+#' abline(lm_rosa.arkan)
+#' # summary(lm_rosa.arkan)
+#' 
+#' plot(sisy.angus$TSNOW, sisy.angus$FFD,
+#'      main = "Sisyrinchium angustifolium",
+#'      xlab = "",
+#'      ylab = "")
+#' abline(lm_sisy.angus)
+#' # summary(lm_sisy.angus)
+#' 
+#' plot(vicia.ameri$TSNOW, vicia.ameri$FFD,
+#'      main = "Vicia americana",
+#'      xlab = "",
+#'      ylab = "")
+#' abline(lm_vicia.ameri)
+#' # summary(lm_vicia.ameri)
+#' 
+#' plot(zigad.elaga$TSNOW, zigad.elaga$FFD,
+#'      main = "Zigadenus elegans",
+#'      xlab = "",
+#'      ylab = "")
+#' abline(lm_zigad.elaga)
+#' # summary(lm_zigad.elaga)
+#' 
+#' plot(zizia.aurea$TSNOW, zizia.aurea$FFD,
+#'      main = "Zizia aurea",
+#'      xlab = "",
+#'      ylab = "")
+#' abline(lm_zizia.aurea)
+#' # summary(lm_zizia.aurea)
+#' # dev.off()
+#' 
+#' 
