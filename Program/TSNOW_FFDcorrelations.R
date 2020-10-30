@@ -427,9 +427,9 @@ ZA <- ggscatter(zizia.aurea, x = "TSNOW", y = "FFD", size = 1, add = "reg.line")
 
 
 
-TSNOW_FFD_grid <- grid.arrange(arrangeGrob(AM, AC, AnC, AP, CP, CR, CA, CC, LC, 
-                                           ON, OV, OL,PC, PG, PeG, RR, RA, SA, 
-                                           VA, ZE, ZA,
+TSNOW_FFD_grid <- grid.arrange(arrangeGrob(AP, CP, OV, RR, AnC, CA, CC, LC,
+                                           OL, PC, PG, PeG, VA, ZA, SA, AM, 
+                                           AC, CR, ON, RA, ZE, 
                          ncol=3, nrow=7, 
                          bottom = textGrob("TSNOW", vjust = 1),
                          left = textGrob("FFD", rot = 90, vjust = 1)))
