@@ -197,7 +197,7 @@ CR <- ggscatter(campa.rotun, x = "SPDX", y = "FFD", size = 1, add = "reg.line") 
         axis.title.y=element_text(size=2, colour = "black"),         
         axis.text.x=element_text(size = 10, colour = "black"),                  
         axis.title.x=element_text(size = 2, colour = "black"),                  
-        plot.margin=unit(c(0.5,0.5,0,0), "cm"))
+        plot.margin=unit(c(0.5,0,0,0), "cm"))
 # plot(CR)
 
 CA <- ggscatter(ceras.arven, x = "SPDX", y = "FFD", size = 1, add = "reg.line") + 
@@ -213,7 +213,7 @@ CA <- ggscatter(ceras.arven, x = "SPDX", y = "FFD", size = 1, add = "reg.line") 
         axis.title.y=element_text(size=2, colour = "black"),         
         axis.text.x=element_text(size = 10, colour = "black"),                  
         axis.title.x=element_text(size = 2, colour = "black"),                  
-        plot.margin=unit(c(0.5,0.5,0,0), "cm"))
+        plot.margin=unit(c(0.5,0,0,0), "cm"))
 # plot(CA)
 
 LC <- ggscatter(litho.canes, x = "SPDX", y = "FFD", size = 1, add = "reg.line") + 
@@ -261,7 +261,7 @@ OV <- ggscatter(oxali.viola, x = "SPDX", y = "FFD", size = 1, add = "reg.line") 
         axis.title.y=element_text(size=2, colour = "black"),         
         axis.text.x=element_text(size = 10, colour = "black"),                  
         axis.title.x=element_text(size = 2, colour = "black"),                  
-        plot.margin=unit(c(0.5,0.5,0,0), "cm"))
+        plot.margin=unit(c(0.5,0,0,0), "cm"))
 # plot(OV)
 
 OL <- ggscatter(oxytr.lambe, x = "SPDX", y = "FFD", size = 1, add = "reg.line") + 
@@ -277,7 +277,7 @@ OL <- ggscatter(oxytr.lambe, x = "SPDX", y = "FFD", size = 1, add = "reg.line") 
         axis.title.y=element_text(size=2, colour = "black"),         
         axis.text.x=element_text(size = 10, colour = "black"),                  
         axis.title.x=element_text(size = 2, colour = "black"),                  
-        plot.margin=unit(c(0.5,0.5,0,0), "cm"))
+        plot.margin=unit(c(0.5,0,0,0), "cm"))
 # plot(OL)
 
 PC <- ggscatter(pedic.canad, x = "SPDX", y = "FFD", size = 1, add = "reg.line") + 
@@ -326,7 +326,7 @@ PeG <- ggscatter(penst.grand, x = "SPDX", y = "FFD", size = 1, add = "reg.line")
         axis.title.y=element_text(size=2, colour = "black"),         
         axis.text.x=element_text(size = 10, colour = "black"),                  
         axis.title.x=element_text(size = 2, colour = "black"),                  
-        plot.margin=unit(c(0.5,0.5,0,0), "cm"))
+        plot.margin=unit(c(0.5,0,0,0), "cm"))
 # plot(PeG)
 
 RR <- ggscatter(ranun.rhomb, x = "SPDX", y = "FFD", size = 1, add = "reg.line") + 
@@ -374,7 +374,7 @@ SA <- ggscatter(sisy.angus, x = "SPDX", y = "FFD", size = 1, add = "reg.line") +
         axis.title.y=element_text(size=2, colour = "black"),         
         axis.text.x=element_text(size = 10, colour = "black"),                  
         axis.title.x=element_text(size = 2, colour = "black"),                  
-        plot.margin=unit(c(0.5,0.5,0,0), "cm"))
+        plot.margin=unit(c(0.5,0,0,0), "cm"))
 # plot(SA)
 
 VA <- ggscatter(vicia.ameri, x = "SPDX", y = "FFD", size = 1, add = "reg.line") + 
@@ -407,7 +407,7 @@ ZE <- ggscatter(zigad.elaga, x = "SPDX", y = "FFD", size = 1, add = "reg.line") 
         axis.title.y=element_text(size=2, colour = "black"),
         axis.text.x=element_text(size = 10, colour = "black"),         
         axis.title.x=element_text(size = 2, colour = "black"),                  
-        plot.margin=unit(c(0.5,0.5,0,0), "cm"))
+        plot.margin=unit(c(0.5,0,0,0), "cm"))
 # plot(ZE)
 
 ZA <- ggscatter(zizia.aurea, x = "SPDX", y = "FFD", size = 1, add = "reg.line") + 
@@ -429,17 +429,20 @@ ZA <- ggscatter(zizia.aurea, x = "SPDX", y = "FFD", size = 1, add = "reg.line") 
 
 
 
-SPDX_FFD_grid <- grid.arrange(arrangeGrob(AP, CP, OV, RR, AnC, CA, CC, LC,
-                                           OL, PC, PG, PeG, VA, ZA, SA, AM, 
-                                           AC, CR, ON, RA, ZE, 
+SPDX_FFD_grid <- grid.arrange(arrangeGrob(AP, RR, CP, CA, OV, SA, LC, 
+                                          PC, ZA, VA, CC, AM, AnC, OL, 
+                                          RA, PeG, PG, CR, 
+                                          ZE, AC, ON, 
                          ncol=3, nrow=7, 
                          bottom = textGrob("SPDX", vjust = 1),
-                         left = textGrob("FFD", rot = 90, vjust = 1)))
+                         left = textGrob("FFD", rot = 90, vjust = 1), vp=viewport(width=0.95, height=0.95)))
 pdf("Figures/SPDX_FFD_grid.pdf",width = 8.5, height = 11) 
 grid.draw(SPDX_FFD_grid) 
 dev.off()
 
-
+png(filename = "Figures/SPDX_FFD_grid.png", width = 563, height = 800, units = "px")
+grid.draw(SPDX_FFD_grid) 
+dev.off()
 
 
 #' 
