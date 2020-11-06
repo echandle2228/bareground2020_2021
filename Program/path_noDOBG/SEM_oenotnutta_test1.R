@@ -63,7 +63,7 @@ lavaanPlot(model = fit, node_options = list(shape = "box", fontname =
 library(semPlot)
 semPaths(fit)
 
-# ezknitr::ezspin(file = "Program/SEM_oenotnutta.R", out_dir = "Output", keep_rmd = F, keep_md = F)
+# ezknitr::ezspin(file = "Program/path_noDOBG/SEM_oenotnutta_test1.R", out_dir = "Output", keep_rmd = F, keep_md = F)
 
 
 #https://nmmichalak.github.io/nicholas_michalak/blog_entries/2018/nrg01/nrg01.html 
