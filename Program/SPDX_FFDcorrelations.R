@@ -36,6 +36,11 @@ sisy.angus <- read.csv( file = "Data/sisy.angus.csv", header = T, stringsAsFacto
 vicia.ameri <- read.csv( file = "Data/vicia.ameri.csv", header = T, stringsAsFactors = F)
 zigad.elaga <- read.csv( file = "Data/zigad.elaga.csv", header = T, stringsAsFactors = F)
 zizia.aurea <- read.csv( file = "Data/zizia.aurea.csv", header = T, stringsAsFactors = F)
+ranun.arbor <- read.csv( file = "Data/ranun.arbor.csv", header = T, stringsAsFactors = F)
+litho.incis <- read.csv( file = "Data/litho.incis.csv", header = T, stringsAsFactors = F)
+trill.cernu <- read.csv( file = "Data/trill.cernu.csv", header = T, stringsAsFactors = F)
+
+
                                                  
 #' ### Converd FFD to numeric values
 achil.mille$FFD <- as.numeric(achil.mille$FFD)
@@ -59,6 +64,9 @@ sisy.angus$FFD <- as.numeric(sisy.angus$FFD)
 vicia.ameri$FFD <- as.numeric(vicia.ameri$FFD)
 zigad.elaga$FFD <- as.numeric(zigad.elaga$FFD)
 zizia.aurea$FFD <- as.numeric(zizia.aurea$FFD)
+ranun.arbor$FFD <- as.numeric(ranun.arbor$FFD)
+litho.incis$FFD <- as.numeric(litho.incis$FFD)
+trill.cernu$FFD <- as.numeric(trill.cernu$FFD)
 
 
 #' ### Linear model for each species
@@ -83,6 +91,9 @@ lm_sisy.angus <- lm(data = sisy.angus, FFD ~ SPDX)
 lm_vicia.ameri <- lm(data = vicia.ameri, FFD ~ SPDX)
 lm_zigad.elaga <- lm(data = zigad.elaga, FFD ~ SPDX)
 lm_zizia.aurea <- lm(data = zizia.aurea, FFD ~ SPDX)
+lm_litho.incis <- lm(data = litho.incis, FFD ~ SPDX)
+lm_ranun.arbor <- lm(data = ranun.arbor, FFD ~ SPDX)
+lm_trill.cernu <- lm(data = trill.cernu, FFD ~ SPDX)
 
 
 
@@ -95,7 +106,7 @@ AM <- ggscatter(achil.mille, x = "SPDX", y = "FFD", size = 1, add = "reg.line") 
   ylim(125,170)+
   ggtitle("Achillea millefolium") +
   xlab("") + ylab("") +
-  theme(title = element_text(face="italic"),         
+  theme(title = element_text(face="italic", size = 10),         
         axis.text.y=element_text(size=10, colour = "black"),         
         axis.title.y=element_text(size=2, colour = "black"),         
         axis.text.x=element_text(size = 10, colour = "black"),                  
@@ -111,7 +122,7 @@ AC <- ggscatter(amorp.canes, x = "SPDX", y = "FFD", size = 1, add = "reg.line") 
   ylim(145,195)+
   ggtitle("Amorpha canescens") +
   xlab("") + ylab("") +
-  theme(title = element_text(face="italic"),         
+  theme(title = element_text(face="italic", size = 10),         
         axis.text.y=element_text(size=10, colour = "black"),         
         axis.title.y=element_text(size=2, colour = "black"),         
         axis.text.x=element_text(size = 10, colour = "black"),                  
@@ -127,7 +138,7 @@ AnC <- ggscatter(anemo.canad, x = "SPDX", y = "FFD", size = 1, add = "reg.line")
   ylim(125,170)+
   ggtitle("Anemone canadensis") +
   xlab("") + ylab("") +
-  theme(title = element_text(face="italic"),         
+  theme(title = element_text(face="italic", size = 10),         
         axis.text.y=element_text(size=10, colour = "black"),         
         axis.title.y=element_text(size=2, colour = "black"),         
         axis.text.x=element_text(size = 10, colour = "black"),                  
@@ -143,7 +154,7 @@ AP <- ggscatter(anemo.paten, x = "SPDX", y = "FFD", size = 1, add = "reg.line") 
   ylim(70,160)+
   ggtitle("Anemone patens") +
   xlab("") + ylab("") +
-  theme(title = element_text(face="italic"),         
+  theme(title = element_text(face="italic", size = 10),         
         axis.text.y=element_text(size=10, colour = "black"),         
         axis.title.y=element_text(size=2, colour = "black"),         
         axis.text.x=element_text(size = 10, colour = "black"),                  
@@ -160,7 +171,7 @@ CP <- ggscatter(calth.palus, x = "SPDX", y = "FFD", size = 1, add = "reg.line") 
   ylim(95,140)+
   ggtitle("Caltha palustris") +
   xlab("") + ylab("") +
-  theme(title = element_text(face="italic"),         
+  theme(title = element_text(face="italic", size = 10),         
         axis.text.y=element_text(size=10, colour = "black"),         
         axis.title.y=element_text(size=2, colour = "black"),         
         axis.text.x=element_text(size = 10, colour = "black"),                  
@@ -176,7 +187,7 @@ CC <- ggscatter(cypri.candi, x = "SPDX", y = "FFD", size = 1, add = "reg.line") 
   ylim(135,160)+
   ggtitle("Cypripedium candidum") +
   xlab("") + ylab("") +
-  theme(title = element_text(face="italic"),         
+  theme(title = element_text(face="italic", size = 10),         
         axis.text.y=element_text(size=10, colour = "black"),         
         axis.title.y=element_text(size=2, colour = "black"),         
         axis.text.x=element_text(size = 10, colour = "black"),                  
@@ -192,7 +203,7 @@ CR <- ggscatter(campa.rotun, x = "SPDX", y = "FFD", size = 1, add = "reg.line") 
   ylim(150,220)+
   ggtitle("Campanula rotundifolia") +
   xlab("") + ylab("") +
-  theme(title = element_text(face="italic"),         
+  theme(title = element_text(face="italic", size = 10),         
         axis.text.y=element_text(size=10, colour = "black"),         
         axis.title.y=element_text(size=2, colour = "black"),         
         axis.text.x=element_text(size = 10, colour = "black"),                  
@@ -208,7 +219,7 @@ CA <- ggscatter(ceras.arven, x = "SPDX", y = "FFD", size = 1, add = "reg.line") 
   ylim(105,150)+
   ggtitle("Cerastium arvense") +
   xlab("") + ylab("") +
-  theme(title = element_text(face="italic"),         
+  theme(title = element_text(face="italic", size = 10),         
         axis.text.y=element_text(size=10, colour = "black"),         
         axis.title.y=element_text(size=2, colour = "black"),         
         axis.text.x=element_text(size = 10, colour = "black"),                  
@@ -224,7 +235,7 @@ LC <- ggscatter(litho.canes, x = "SPDX", y = "FFD", size = 1, add = "reg.line") 
   ylim(105,150)+
   ggtitle("Lithospermum canescens") +
   xlab("") + ylab("") +
-  theme(title = element_text(face="italic"),         
+  theme(title = element_text(face="italic", size = 10),         
         axis.text.y=element_text(size=10, colour = "black"),         
         axis.title.y=element_text(size=2, colour = "black"),         
         axis.text.x=element_text(size = 10, colour = "black"),                  
@@ -240,7 +251,7 @@ ON <- ggscatter(oenot.nutta, x = "SPDX", y = "FFD", size = 1, add = "reg.line") 
   ylim(155,240)+
   ggtitle("Oenothera nuttallii") +
   xlab("") + ylab("") +
-  theme(title = element_text(face="italic"),         
+  theme(title = element_text(face="italic", size = 10),         
         axis.text.y=element_text(size=10, colour = "black"),         
         axis.title.y=element_text(size=2, colour = "black"),         
         axis.text.x=element_text(size = 10, colour = "black"),                  
@@ -256,7 +267,7 @@ OV <- ggscatter(oxali.viola, x = "SPDX", y = "FFD", size = 1, add = "reg.line") 
   ylim(110,150)+
   ggtitle("Oxalis violacea") +
   xlab("") + ylab("") +
-  theme(title = element_text(face="italic"),         
+  theme(title = element_text(face="italic", size = 10),         
         axis.text.y=element_text(size=10, colour = "black"),         
         axis.title.y=element_text(size=2, colour = "black"),         
         axis.text.x=element_text(size = 10, colour = "black"),                  
@@ -272,7 +283,7 @@ OL <- ggscatter(oxytr.lambe, x = "SPDX", y = "FFD", size = 1, add = "reg.line") 
   ylim(140,185)+
   ggtitle("Oxytre lambe") +
   xlab("") + ylab("") +
-  theme(title = element_text(face="italic"),         
+  theme(title = element_text(face="italic", size = 10),         
         axis.text.y=element_text(size=10, colour = "black"),         
         axis.title.y=element_text(size=2, colour = "black"),         
         axis.text.x=element_text(size = 10, colour = "black"),                  
@@ -289,7 +300,7 @@ PC <- ggscatter(pedic.canad, x = "SPDX", y = "FFD", size = 1, add = "reg.line") 
   ylim(120,155)+
   ggtitle("Pedicularis canadensis") +
   xlab("") + ylab("") +
-  theme(title = element_text(face="italic"),         
+  theme(title = element_text(face="italic", size = 10),         
         axis.text.y=element_text(size=10, colour = "black"),         
         axis.title.y=element_text(size=2, colour = "black"),         
         axis.text.x=element_text(size = 10, colour = "black"),                  
@@ -305,7 +316,7 @@ PG <- ggscatter(penst.graci, x = "SPDX", y = "FFD", size = 1, add = "reg.line") 
   ylim(145,175)+
   ggtitle("Penstemon gracilis") +
   xlab("") + ylab("") +
-  theme(title = element_text(face="italic"),         
+  theme(title = element_text(face="italic", size = 10),         
         axis.text.y=element_text(size=10, colour = "black"),         
         axis.title.y=element_text(size=2, colour = "black"),         
         axis.text.x=element_text(size = 10, colour = "black"),                  
@@ -321,7 +332,7 @@ PeG <- ggscatter(penst.grand, x = "SPDX", y = "FFD", size = 1, add = "reg.line")
   ylim(145,175)+
   ggtitle("Penstemon grandiflorus") +
   xlab("") + ylab("") +
-  theme(title = element_text(face="italic"),         
+  theme(title = element_text(face="italic", size = 10),         
         axis.text.y=element_text(size=10, colour = "black"),         
         axis.title.y=element_text(size=2, colour = "black"),         
         axis.text.x=element_text(size = 10, colour = "black"),                  
@@ -337,7 +348,7 @@ RR <- ggscatter(ranun.rhomb, x = "SPDX", y = "FFD", size = 1, add = "reg.line") 
   ylim(85,140)+
   ggtitle("Ranunculus rhomboides") +
   xlab("") + ylab("") +
-  theme(title = element_text(face="italic"),         
+  theme(title = element_text(face="italic", size = 10),         
         axis.text.y=element_text(size=10, colour = "black"),         
         axis.title.y=element_text(size=2, colour = "black"),         
         axis.text.x=element_text(size = 10, colour = "black"),                  
@@ -353,7 +364,7 @@ RA <- ggscatter(rosa.arkan, x = "SPDX", y = "FFD", size = 1, add = "reg.line") +
   ylim(140,180)+
   ggtitle("Rosa arkansana") +
   xlab("") + ylab("") +
-  theme(title = element_text(face="italic"),         
+  theme(title = element_text(face="italic", size = 10),         
         axis.text.y=element_text(size=10, colour = "black"),         
         axis.title.y=element_text(size=2, colour = "black"),         
         axis.text.x=element_text(size = 10, colour = "black"),                  
@@ -369,7 +380,7 @@ SA <- ggscatter(sisy.angus, x = "SPDX", y = "FFD", size = 1, add = "reg.line") +
   ylim(110,155)+
   ggtitle("Sisyrinchium angustifolium") +
   xlab("") + ylab("") +
-  theme(title = element_text(face="italic"),         
+  theme(title = element_text(face="italic", size = 10),         
         axis.text.y=element_text(size=10, colour = "black"),         
         axis.title.y=element_text(size=2, colour = "black"),         
         axis.text.x=element_text(size = 10, colour = "black"),                  
@@ -385,7 +396,7 @@ VA <- ggscatter(vicia.ameri, x = "SPDX", y = "FFD", size = 1, add = "reg.line") 
   ylim(125,170)+
   ggtitle("Vicia americana") +
   xlab("") + ylab("") +
-  theme(title = element_text(face="italic"),         
+  theme(title = element_text(face="italic", size = 10),         
         axis.text.y=element_text(size=10, colour = "black"),         
         axis.title.y=element_text(size=2, colour = "black"),         
         axis.text.x=element_text(size = 10, colour = "black"),                  
@@ -402,7 +413,7 @@ ZE <- ggscatter(zigad.elaga, x = "SPDX", y = "FFD", size = 1, add = "reg.line") 
   ylim(150,190)+
   ggtitle("Zigadenus elegans") +
   xlab("") + ylab("") +
-  theme(title = element_text(face="italic"),
+  theme(title = element_text(face="italic", size = 10),
         axis.text.y=element_text(size=10, colour = "black"),
         axis.title.y=element_text(size=2, colour = "black"),
         axis.text.x=element_text(size = 10, colour = "black"),         
@@ -419,7 +430,7 @@ ZA <- ggscatter(zizia.aurea, x = "SPDX", y = "FFD", size = 1, add = "reg.line") 
   ylim(115,170)+
   ggtitle("Zizia aurea") +
   xlab("") + ylab("") +
-  theme(title = element_text(face="italic"),         
+  theme(title = element_text(face="italic", size = 10),         
         axis.text.y=element_text(size=10, colour = "black"),         
         axis.title.y=element_text(size=2, colour = "black"),         
         axis.text.x=element_text(size = 10, colour = "black"),         
@@ -427,15 +438,67 @@ ZA <- ggscatter(zizia.aurea, x = "SPDX", y = "FFD", size = 1, add = "reg.line") 
         plot.margin=unit(c(0.5,0,0,0), "cm"))
 # plot(ZA)
 
+LI <- ggscatter(litho.incis, x = "SPDX", y = "FFD", size = 1, add = "reg.line") + 
+  stat_cor(aes(label = paste(..rr.label.., ..p.label.., sep = "~`,`~")),
+           label.x.npc = "left",            
+           label.y = 120) +
+  theme_classic() +
+  # xlim(0,8) +
+  # ylim(115,170)+
+  ggtitle("Lithospermum incisum") +
+  xlab("") + ylab("") +
+  theme(title = element_text(face="italic", size = 10),         
+        axis.text.y=element_text(size=10, colour = "black"),         
+        axis.title.y=element_text(size=2, colour = "black"),         
+        axis.text.x=element_text(size = 10, colour = "black"),         
+        axis.title.x=element_text(size = 2, colour = "black"),         
+        plot.margin=unit(c(0.5,0,0,0), "cm"))
+# plot(LI)
 
+RaA <- ggscatter(ranun.rhomb, x = "SPDX", y = "FFD", size = 1, add = "reg.line") + 
+  stat_cor(aes(label = paste(..rr.label.., ..p.label.., sep = "~`,`~")),
+           label.x.npc = "left",            
+           label.y = 120) +
+  theme_classic() +
+  # xlim(0,8) +
+  # ylim(115,170)+
+  ggtitle("Ranunculus abortivus") +
+  xlab("") + ylab("") +
+  theme(title = element_text(face="italic", size = 10),         
+        axis.text.y=element_text(size=10, colour = "black"),         
+        axis.title.y=element_text(size=2, colour = "black"),         
+        axis.text.x=element_text(size = 10, colour = "black"),         
+        axis.title.x=element_text(size = 2, colour = "black"),         
+        plot.margin=unit(c(0.5,0,0,0), "cm"))
+# plot(RaA)
 
-SPDX_FFD_grid <- grid.arrange(arrangeGrob(AP, RR, CP, CA, OV, SA, LC, 
+TC <- ggscatter(trill.cernu, x = "SPDX", y = "FFD", size = 1, add = "reg.line") + 
+  stat_cor(aes(label = paste(..rr.label.., ..p.label.., sep = "~`,`~")),
+           label.x.npc = "left",            
+           label.y = 160) +
+  theme_classic() +
+  xlim(0,18) +
+  # ylim(155,170)+
+  ggtitle("Trillium cernuum") +
+  xlab("") + ylab("") +
+  theme(title = element_text(face="italic", size = 10),         
+        axis.text.y=element_text(size=10, colour = "black"),         
+        axis.title.y=element_text(size=2, colour = "black"),         
+        axis.text.x=element_text(size = 10, colour = "black"),         
+        axis.title.x=element_text(size = 2, colour = "black"),         
+        plot.margin=unit(c(0.5,0,0,0), "cm"))
+# plot(TC)
+
+SPDX_FFD_grid <- grid.arrange(arrangeGrob(AP, RR, CP, CA, RaA, OV, 
+                                          SA, LC, TC, LI,
                                           PC, ZA, VA, CC, AM, AnC, OL, 
                                           RA, PeG, PG, CR, 
                                           ZE, AC, ON, 
-                         ncol=3, nrow=7, 
+                         ncol=4, nrow=6, 
                          bottom = textGrob("SPDX", vjust = 1),
                          left = textGrob("FFD", rot = 90, vjust = 1), vp=viewport(width=0.95, height=0.95)))
+grid.draw(SPDX_FFD_grid)
+
 pdf("Figures/SPDX_FFD_grid.pdf",width = 8.5, height = 11) 
 grid.draw(SPDX_FFD_grid) 
 dev.off()
