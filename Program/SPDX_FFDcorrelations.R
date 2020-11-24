@@ -185,7 +185,7 @@ CC <- ggscatter(cypri.candi, x = "SPDX", y = "FFD", size = 1, add = "reg.line") 
            label.y = 140) +
   theme_classic() +
   ylim(135,160)+
-  ggtitle("Cypripedium candidum") +
+  ggtitle("Cypripedium \ncandidum") +
   xlab("") + ylab("") +
   theme(title = element_text(face="italic", size = 10),         
         axis.text.y=element_text(size=10, colour = "black"),         
@@ -201,7 +201,7 @@ CR <- ggscatter(campa.rotun, x = "SPDX", y = "FFD", size = 1, add = "reg.line") 
            label.y = 155) +
   theme_classic() +
   ylim(150,220)+
-  ggtitle("Campanula rotundifolia") +
+  ggtitle("Campanula \nrotundifolia") +
   xlab("") + ylab("") +
   theme(title = element_text(face="italic", size = 10),         
         axis.text.y=element_text(size=10, colour = "black"),         
@@ -233,7 +233,7 @@ LC <- ggscatter(litho.canes, x = "SPDX", y = "FFD", size = 1, add = "reg.line") 
            label.y = 110) +
   theme_classic() +
   ylim(105,150)+
-  ggtitle("Lithospermum canescens") +
+  ggtitle("Lithospermum \ncanescens") +
   xlab("") + ylab("") +
   theme(title = element_text(face="italic", size = 10),         
         axis.text.y=element_text(size=10, colour = "black"),         
@@ -298,7 +298,7 @@ PC <- ggscatter(pedic.canad, x = "SPDX", y = "FFD", size = 1, add = "reg.line") 
   theme_classic() +
   xlim(0,8) +
   ylim(120,155)+
-  ggtitle("Pedicularis canadensis") +
+  ggtitle("Pedicularis \ncanadensis") +
   xlab("") + ylab("") +
   theme(title = element_text(face="italic", size = 10),         
         axis.text.y=element_text(size=10, colour = "black"),         
@@ -330,7 +330,7 @@ PeG <- ggscatter(penst.grand, x = "SPDX", y = "FFD", size = 1, add = "reg.line")
            label.y = 150) +
   theme_classic() +
   ylim(145,175)+
-  ggtitle("Penstemon grandiflorus") +
+  ggtitle("Penstemon \ngrandiflorus") +
   xlab("") + ylab("") +
   theme(title = element_text(face="italic", size = 10),         
         axis.text.y=element_text(size=10, colour = "black"),         
@@ -346,7 +346,7 @@ RR <- ggscatter(ranun.rhomb, x = "SPDX", y = "FFD", size = 1, add = "reg.line") 
            label.y = 90) +
   theme_classic() +
   ylim(85,140)+
-  ggtitle("Ranunculus rhomboides") +
+  ggtitle("Ranunculus \nrhomboides") +
   xlab("") + ylab("") +
   theme(title = element_text(face="italic", size = 10),         
         axis.text.y=element_text(size=10, colour = "black"),         
@@ -378,7 +378,7 @@ SA <- ggscatter(sisy.angus, x = "SPDX", y = "FFD", size = 1, add = "reg.line") +
            label.y = 115) +
   theme_classic() +
   ylim(110,155)+
-  ggtitle("Sisyrinchium angustifolium") +
+  ggtitle("Sisyrinchium \nangustifolium") +
   xlab("") + ylab("") +
   theme(title = element_text(face="italic", size = 10),         
         axis.text.y=element_text(size=10, colour = "black"),         
@@ -445,7 +445,7 @@ LI <- ggscatter(litho.incis, x = "SPDX", y = "FFD", size = 1, add = "reg.line") 
   theme_classic() +
   # xlim(0,8) +
   # ylim(115,170)+
-  ggtitle("Lithospermum incisum") +
+  ggtitle("Lithospermum \nincisum") +
   xlab("") + ylab("") +
   theme(title = element_text(face="italic", size = 10),         
         axis.text.y=element_text(size=10, colour = "black"),         
@@ -455,14 +455,14 @@ LI <- ggscatter(litho.incis, x = "SPDX", y = "FFD", size = 1, add = "reg.line") 
         plot.margin=unit(c(0.5,0,0,0), "cm"))
 # plot(LI)
 
-RaA <- ggscatter(ranun.rhomb, x = "SPDX", y = "FFD", size = 1, add = "reg.line") + 
+RaA <- ggscatter(ranun.arbor, x = "SPDX", y = "FFD", size = 1, add = "reg.line") + 
   stat_cor(aes(label = paste(..rr.label.., ..p.label.., sep = "~`,`~")),
            label.x.npc = "left",            
            label.y = 120) +
   theme_classic() +
   # xlim(0,8) +
   # ylim(115,170)+
-  ggtitle("Ranunculus abortivus") +
+  ggtitle("Ranunculus \nabortivus") +
   xlab("") + ylab("") +
   theme(title = element_text(face="italic", size = 10),         
         axis.text.y=element_text(size=10, colour = "black"),         
