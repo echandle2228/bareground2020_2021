@@ -54,7 +54,7 @@ modificationIndices(fit)
 
 #' ### Example path plots
 lavaanPlot(model = fit, node_options = list(shape = "box", fontname = 
-                                              "Helvetica"), edge_options = list(color = "grey"), 
+                                              "serif"), edge_options = list(color = "grey"), 
            coefs = TRUE,covs=
              TRUE,stars = c("regress"))
 
