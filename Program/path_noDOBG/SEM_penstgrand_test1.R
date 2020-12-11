@@ -28,10 +28,10 @@ TSNOW ~~ AGDU
 SPDX ~~ SPDX
 FFD ~~ FFD
 #Indirect effects of TSNOW on FFD
-TSNOWie2:= 1+ c*d
+TSNOWie2:= c*d
 #Indirect effects of AGDU on FFD
-AGDUie2:= 1+ C*d
-AGDUiet:= 1 + AGDUie2 + f
+AGDUie2:= C*d
+AGDUiet:= AGDUie2 + f
 #Indirect effect of SPDX on FFD
 TSNOW ~ 1
 AGDU ~ 1'
