@@ -43,6 +43,7 @@ modelsummary(fit)
 
 #' ### Standardized Measurements
 summary(fit,fit.measures=TRUE,standardized=TRUE,rsquare=TRUE)
+standardizedSolution(fit)
 
 #' ### Confidence Intervals
 parameterEstimates(fit)
@@ -53,11 +54,12 @@ fitMeasures(fit)
 #' ### Modification indicies
 modificationIndices(fit)
 
-#' ### Example path plots
+#' ### Path plots
 lavaanPlot(model = fit, node_options = list(shape = "box", fontname = 
                                               "serif"), edge_options = list(color = "grey"), 
-           coefs = TRUE,covs=
+           coefs = TRUE, stand = TRUE,covs=
              TRUE,stars = c("regress"))
+
 
 
 library(semPlot)
