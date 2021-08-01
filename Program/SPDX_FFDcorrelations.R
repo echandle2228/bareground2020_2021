@@ -68,6 +68,31 @@ ranun.arbor$FFD <- as.numeric(ranun.arbor$FFD)
 litho.incis$FFD <- as.numeric(litho.incis$FFD)
 trill.cernu$FFD <- as.numeric(trill.cernu$FFD)
 
+#' ### Converted SPDX into centimeters from inches
+achil.mille$SPDX <- achil.mille$SPDX * 2.54
+amorp.canes$SPDX <- amorp.canes$SPDX * 2.54
+anemo.canad$SPDX <- anemo.canad$SPDX * 2.54
+anemo.paten$SPDX <- anemo.paten$SPDX * 2.54
+calth.palus$SPDX <- calth.palus$SPDX * 2.54
+campa.rotun$SPDX <- campa.rotun$SPDX * 2.54
+ceras.arven$SPDX <- ceras.arven$SPDX * 2.54
+cypri.candi$SPDX <- cypri.candi$SPDX * 2.54
+litho.canes$SPDX <- litho.canes$SPDX * 2.54
+oenot.nutta$SPDX <- oenot.nutta$SPDX * 2.54
+oxali.viola$SPDX <- oxali.viola$SPDX * 2.54
+oxytr.lambe$SPDX <- oxytr.lambe$SPDX * 2.54
+pedic.canad$SPDX <- pedic.canad$SPDX * 2.54
+penst.graci$SPDX <- penst.graci$SPDX * 2.54
+penst.grand$SPDX <- penst.grand$SPDX * 2.54
+ranun.rhomb$SPDX <- ranun.rhomb$SPDX * 2.54
+rosa.arkan$SPDX <- rosa.arkan$SPDX * 2.54
+sisy.angus$SPDX <- sisy.angus$SPDX * 2.54
+vicia.ameri$SPDX <- vicia.ameri$SPDX * 2.54
+zigad.elaga$SPDX <- zigad.elaga$SPDX * 2.54
+zizia.aurea$SPDX <- zizia.aurea$SPDX * 2.54
+ranun.arbor$SPDX <- ranun.arbor$SPDX * 2.54
+litho.incis$SPDX <- litho.incis$SPDX * 2.54
+trill.cernu$SPDX <- trill.cernu$SPDX * 2.54
 
 #' ### Linear model for each species
 lm_achil.mille <- lm(data = achil.mille, FFD ~ SPDX)
@@ -118,7 +143,7 @@ AM <- ggscatter(achil.mille, x = "SPDX", y = "FFD", size = 1, add = "reg.line") 
 AC <- ggscatter(amorp.canes, x = "SPDX", y = "FFD", size = 1, add = "reg.line") +
   stat_cor(aes(label = paste(..rr.label.., ..p.label.., sep = "~`,`~")),
     label.x.npc = "left", family = "serif",            
-    label.y = 150) + 
+    label.y = 149) + 
   theme_classic() +
   ylim(145,195)+
   ggtitle("Amorpha canescens") +
@@ -135,7 +160,7 @@ plot(AC)
 AnC <- ggscatter(anemo.canad, x = "SPDX", y = "FFD", size = 1, add = "reg.line") +
   stat_cor(aes(label = paste(..rr.label.., ..p.label.., sep = "~`,`~")),
     label.x.npc = "left", family = "serif",            
-    label.y = 130) +
+    label.y = 129) +
   theme_classic() +
   ylim(125,170)+
   ggtitle("Anemone canadensis") +
@@ -169,9 +194,9 @@ AP <- ggscatter(anemo.paten, x = "SPDX", y = "FFD", size = 1, add = "reg.line") 
 CP <- ggscatter(calth.palus, x = "SPDX", y = "FFD", size = 1, add = "reg.line") + 
   stat_cor(aes(label = paste(..rr.label.., ..p.label.., sep = "~`,`~")),
            label.x.npc = "left", family = "serif",            
-           label.y = 100) +
+           label.y = 99) +
   theme_classic() +
-  xlim(0,15) +
+  xlim(0,40) +
   ylim(95,140)+
   ggtitle("Caltha palustris") +
   xlab("") + ylab("") +
@@ -204,7 +229,7 @@ CC <- ggscatter(cypri.candi, x = "SPDX", y = "FFD", size = 1, add = "reg.line") 
 CR <- ggscatter(campa.rotun, x = "SPDX", y = "FFD", size = 1, add = "reg.line") + 
   stat_cor(aes(label = paste(..rr.label.., ..p.label.., sep = "~`,`~")),
            label.x.npc = "left", family = "serif",            
-           label.y = 155) +
+           label.y = 157) +
   theme_classic() +
   ylim(150,220)+
   ggtitle("Campanula \nrotundifolia") +
@@ -221,7 +246,7 @@ CR <- ggscatter(campa.rotun, x = "SPDX", y = "FFD", size = 1, add = "reg.line") 
 CA <- ggscatter(ceras.arven, x = "SPDX", y = "FFD", size = 1, add = "reg.line") + 
   stat_cor(aes(label = paste(..rr.label.., ..p.label.., sep = "~`,`~")),
            label.x.npc = "left", family = "serif",            
-           label.y = 110) +
+           label.y = 109) +
   theme_classic() +
   ylim(105,150)+
   ggtitle("Cerastium arvense") +
@@ -255,7 +280,7 @@ LC <- ggscatter(litho.canes, x = "SPDX", y = "FFD", size = 1, add = "reg.line") 
 ON <- ggscatter(oenot.nutta, x = "SPDX", y = "FFD", size = 1, add = "reg.line") + 
   stat_cor(aes(label = paste(..rr.label.., ..p.label.., sep = "~`,`~")),
            label.x.npc = "left", family = "serif",            
-           label.y = 160) +
+           label.y = 161) +
   theme_classic() +
   ylim(155,240)+
   ggtitle("Oenothera nuttallii") +
@@ -272,9 +297,10 @@ ON <- ggscatter(oenot.nutta, x = "SPDX", y = "FFD", size = 1, add = "reg.line") 
 OV <- ggscatter(oxali.viola, x = "SPDX", y = "FFD", size = 1, add = "reg.line") + 
   stat_cor(aes(label = paste(..rr.label.., ..p.label.., sep = "~`,`~")),
            label.x.npc = "left", family = "serif",            
-           label.y = 115) +
+           label.y = 114) +
   theme_classic() +
   ylim(110,150)+
+  xlim(0, 55)+
   ggtitle("Oxalis violacea") +
   xlab("") + ylab("") +
   theme(text = element_text(family = "serif"),         
@@ -292,6 +318,7 @@ OL <- ggscatter(oxytr.lambe, x = "SPDX", y = "FFD", size = 1, add = "reg.line") 
            label.y = 145) +
   theme_classic() +
   ylim(140,185)+
+  xlim(0, 55) +
   ggtitle("Oxytre lambe") +
   xlab("") + ylab("") +
   theme(text = element_text(family = "serif"),         
@@ -308,7 +335,7 @@ PC <- ggscatter(pedic.canad, x = "SPDX", y = "FFD", size = 1, add = "reg.line") 
            label.x.npc = "left", family = "serif",            
            label.y = 125) +
   theme_classic() +
-  xlim(0,8) +
+  xlim(0,20) +
   ylim(120,155)+
   ggtitle("Pedicularis \ncanadensis") +
   xlab("") + ylab("") +
@@ -324,7 +351,7 @@ PC <- ggscatter(pedic.canad, x = "SPDX", y = "FFD", size = 1, add = "reg.line") 
 PG <- ggscatter(penst.graci, x = "SPDX", y = "FFD", size = 1, add = "reg.line") + 
   stat_cor(aes(label = paste(..rr.label.., ..p.label.., sep = "~`,`~")),
            label.x.npc = "left", family = "serif",            
-           label.y = 150) +
+           label.y = 148) +
   theme_classic() +
   ylim(145,175)+
   ggtitle("Penstemon gracilis") +
@@ -341,7 +368,7 @@ PG <- ggscatter(penst.graci, x = "SPDX", y = "FFD", size = 1, add = "reg.line") 
 PeG <- ggscatter(penst.grand, x = "SPDX", y = "FFD", size = 1, add = "reg.line") + 
   stat_cor(aes(label = paste(..rr.label.., ..p.label.., sep = "~`,`~")),
            label.x.npc = "left", family = "serif",            
-           label.y = 150) +
+           label.y = 149) +
   theme_classic() +
   ylim(145,175)+
   ggtitle("Penstemon \ngrandiflorus") +
@@ -358,7 +385,7 @@ PeG <- ggscatter(penst.grand, x = "SPDX", y = "FFD", size = 1, add = "reg.line")
 RR <- ggscatter(ranun.rhomb, x = "SPDX", y = "FFD", size = 1, add = "reg.line") + 
   stat_cor(aes(label = paste(..rr.label.., ..p.label.., sep = "~`,`~")),
            label.x.npc = "left", family = "serif",
-           label.y = 90) +
+           label.y = 91) +
   theme_classic() +
   ylim(85,140)+
   ggtitle("Ranunculus \nrhomboides") +
@@ -427,7 +454,7 @@ VA <- ggscatter(vicia.ameri, x = "SPDX", y = "FFD", size = 1, add = "reg.line") 
 ZE <- ggscatter(zigad.elaga, x = "SPDX", y = "FFD", size = 1, add = "reg.line") + 
   stat_cor(aes(label = paste(..rr.label.., ..p.label.., sep = "~`,`~")),
            label.x.npc = "left", family = "serif",            
-           label.y = 155) +
+           label.y = 154) +
   theme_classic() +
   ylim(150,190)+
   ggtitle("Zigadenus elegans") +
@@ -446,7 +473,7 @@ ZA <- ggscatter(zizia.aurea, x = "SPDX", y = "FFD", size = 1, add = "reg.line") 
            label.x.npc = "left", family = "serif",            
            label.y = 120) +
   theme_classic() +
-  xlim(0,8) +
+  xlim(0,25) +
   ylim(115,170)+
   ggtitle("Zizia aurea") +
   xlab("") + ylab("") +
@@ -465,7 +492,7 @@ LI <- ggscatter(litho.incis, x = "SPDX", y = "FFD", size = 1, add = "reg.line") 
            label.y = 120) +
   theme_classic() +
   # xlim(0,8) +
-  # ylim(115,170)+
+  ylim(115,155)+
   ggtitle("Lithospermum \nincisum") +
   xlab("") + ylab("") +
   theme(text = element_text(family = "serif"),         
@@ -480,9 +507,9 @@ LI <- ggscatter(litho.incis, x = "SPDX", y = "FFD", size = 1, add = "reg.line") 
 RaA <- ggscatter(ranun.arbor, x = "SPDX", y = "FFD", size = 1, add = "reg.line") + 
   stat_cor(aes(label = paste(..rr.label.., ..p.label.., sep = "~`,`~")),
            label.x.npc = "left", family = "serif",          
-           label.y = 120) +
+           label.y = 122) +
   theme_classic() +
-  # xlim(0,8) +
+  xlim(0,45) +
   # ylim(115,170)+
   ggtitle("Ranunculus \nabortivus") +
   xlab("") + ylab("") +
@@ -498,10 +525,10 @@ RaA <- ggscatter(ranun.arbor, x = "SPDX", y = "FFD", size = 1, add = "reg.line")
 TC <- ggscatter(trill.cernu, x = "SPDX", y = "FFD", size = 1, add = "reg.line") + 
   stat_cor(aes(label = paste(..rr.label.., ..p.label.., sep = "~`,`~")),
            label.x.npc = "left", family = "serif",            
-           label.y = 160) +
+           label.y = 161) +
   theme_classic() +
-  xlim(0,18) +
-  # ylim(155,170)+
+  xlim(0,45) +
+  ylim(155,235)+
   ggtitle("Trillium cernuum") +
   xlab("") + ylab("") +
   theme(text = element_text(family = "serif"),
@@ -513,22 +540,22 @@ TC <- ggscatter(trill.cernu, x = "SPDX", y = "FFD", size = 1, add = "reg.line") 
         plot.margin=unit(c(0.5,0,0,0), "cm"))
 # plot(TC)
 
-SPDX_FFD_grid <- grid.arrange(arrangeGrob(RR, CA, RaA, OV, 
-                                          SA, TC, LI,
+SPDX_FFD_grid <- grid.arrange(arrangeGrob(AP, RR, CP, CA, RaA, LC, OV, 
+                                          TC, SA, LI,
                                           PC, ZA, VA, CC, AM, AnC, OL, 
-                                          RA, PeG, PG, 
-                                          ZE, ON, 
-                         ncol=4, nrow=5, 
+                                          PeG, RA, PG, 
+                                          ZE, AC, CR, ON, 
+                         ncol=4, nrow=6, 
                          bottom = textGrob("SPDX", vjust = 1, gp=gpar(fontfamily = "serif")),
                          left = textGrob("FFD", rot = 90, vjust = 1, gp=gpar(fontfamily = "serif")), 
                          vp=viewport(width=0.95, height=0.95)))
 grid.draw(SPDX_FFD_grid)
 
-pdf("Figures/SPDX_FFD_grid.pdf",width = 8.5, height = 11) 
-grid.draw(SPDX_FFD_grid) 
+pdf("Figures/SP&SPDX/SPDX_FFD_grid.pdf",width = 8.5, height = 11)
+grid.draw(SPDX_FFD_grid)
 dev.off()
 
-png(filename = "Figures/SPDX_FFD_grid.png", width = 563, height = 800, units = "px")
-grid.draw(SPDX_FFD_grid) 
+png(filename = "Figures/SP&SPDX/SPDX_FFD_grid.png", width = 563, height = 800, units = "px")
+grid.draw(SPDX_FFD_grid)
 dev.off()
 
