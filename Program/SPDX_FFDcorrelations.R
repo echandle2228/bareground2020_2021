@@ -546,8 +546,8 @@ SPDX_FFD_grid <- grid.arrange(arrangeGrob(AP, RR, CP, CA, RaA, LC, OV,
                                           PeG, RA, PG, 
                                           ZE, AC, CR, ON, 
                          ncol=4, nrow=6, 
-                         bottom = textGrob("SPDX", vjust = 1, gp=gpar(fontfamily = "serif")),
-                         left = textGrob("FFD", rot = 90, vjust = 1, gp=gpar(fontfamily = "serif")), 
+                         bottom = textGrob("SPDX (cm)", vjust = 1, gp=gpar(fontfamily = "serif")),
+                         left = textGrob("FFD (DOY)", rot = 90, vjust = 1, gp=gpar(fontfamily = "serif")), 
                          vp=viewport(width=0.95, height=0.95)))
 grid.draw(SPDX_FFD_grid)
 
